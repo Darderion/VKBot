@@ -1,18 +1,8 @@
 package com.gogo.steelbotrun.vkbot
 
-import com.gogo.steelbotrun.vkbot.battle.Fight
-import com.gogo.steelbotrun.vkbot.battle.actions.ActionType
-import com.gogo.steelbotrun.vkbot.battle.actions.Area
-import com.gogo.steelbotrun.vkbot.battle.actions.Move
-import com.gogo.steelbotrun.vkbot.battle.actions.SimpleAction
-import com.gogo.steelbotrun.vkbot.battle.fighters.Player
-import com.gogo.steelbotrun.vkbot.battle.fighters.monsters.BasicMonster
-import com.gogo.steelbotrun.vkbot.battle.fighters.monsters.Monster
-import com.gogo.steelbotrun.vkbot.events.EventMessage
-import org.springframework.stereotype.Component
-
+/*
 @Component
-class Console(val server: Server) {
+class MessageParser() {
 	fun process(event: EventMessage) {
 		val text = event.text
 		val fromId = event.fromId
@@ -103,3 +93,4 @@ class Console(val server: Server) {
 		SDK.send(message, players)
 	}
 }
+ */
