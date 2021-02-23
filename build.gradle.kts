@@ -13,6 +13,7 @@ java.sourceCompatibility = JavaVersion.VERSION_15
 
 repositories {
 	mavenCentral()
+	maven("https://jitpack.io")
 }
 
 dependencies {
@@ -24,6 +25,8 @@ dependencies {
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
+
+	implementation("com.github.RealCerus:JGif:1.0.0")
 
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("io.projectreactor:reactor-test")

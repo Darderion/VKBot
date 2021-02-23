@@ -9,17 +9,21 @@ class MessageParser() {
 		val players = mutableListOf(fromId)
 		val fight = server.findFight(fromId)
 
-		var message = ""
+		val textParts = text.trim().split(" ")
+
+		var message = "Unknown command"
 		message =
 			with(text.toLowerCase()) {
 				when {
 					contains("name") -> {
-						val name = text.toLowerCase().split(" ").mapIndexed { index, s -> if (s.contains("name")) index + 1 else -1 }.filter { it != -1 }.map { text.toLowerCase().split(" ")[it] }.firstOrNull()
+						val name = text.toLowerCase().split(" ")
+							.mapIndexed { index, s -> if (s.contains("name")) index + 1 else -1 }.filter { it != -1 }
+							.map { text.toLowerCase().split(" ")[it] }.firstOrNull()
 						if (name != null) {
 							server.changeName(fromId, name)
 							"Account name changed to '${name}'"
 						} else {
-							text
+							message
 						}
 					}
 					fight != null -> {
@@ -35,7 +39,8 @@ class MessageParser() {
 									player.selectMove(skills.first())
 									val fightMessage = fight.update()
 									if (fightMessage.toLowerCase().contains("round")) {
-										players.addAll(fight.participants.filterIsInstance<Player>().map { it.id }.filter { it != fromId })
+										players.addAll(fight.participants.filterIsInstance<Player>().map { it.id }
+											.filter { it != fromId })
 									}
 									fightMessage
 								}
@@ -62,20 +67,30 @@ class MessageParser() {
 									when {
 										contains("bot") -> server.fights.add(
 											Fight(
-											mutableListOf(
-												BasicMonster("Bandit",
-													listOf(com.gogo.steelbotrun.vkbot.battle.actions.Area.Head, com.gogo.steelbotrun.vkbot.battle.actions.Area.Body, com.gogo.steelbotrun.vkbot.battle.actions.Area.Legs),
-													listOf(
-														Move("Bandit's attack",
-															listOf(
-																SimpleAction(com.gogo.steelbotrun.vkbot.battle.actions.ActionType.Attack, com.gogo.steelbotrun.vkbot.battle.actions.Area.Body, 10)
+												mutableListOf(
+													BasicMonster(
+														"Bandit",
+														listOf(
+															com.gogo.steelbotrun.vkbot.battle.actions.Area.Head,
+															com.gogo.steelbotrun.vkbot.battle.actions.Area.Body,
+															com.gogo.steelbotrun.vkbot.battle.actions.Area.Legs
+														),
+														listOf(
+															Move(
+																"Bandit's attack",
+																listOf(
+																	SimpleAction(
+																		com.gogo.steelbotrun.vkbot.battle.actions.ActionType.Attack,
+																		com.gogo.steelbotrun.vkbot.battle.actions.Area.Body,
+																		10
+																	)
+																)
 															)
 														)
-													)
-												),
-												Player("Vasya", fromId)
+													),
+													Player("Vasya", fromId)
+												)
 											)
-										)
 										)
 										contains("player") -> server.fights.first { it.participants.none { it is Monster } }.participants.add(
 											Player("Vasyan", fromId)
