@@ -27,6 +27,9 @@ dependencies {
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 
 	implementation("com.github.RealCerus:JGif:1.0.0")
+	implementation("org.apache.httpcomponents:httpclient:4.3.4")
+	implementation("org.apache.httpcomponents:httpmime:4.3.1")
+	implementation("com.google.code.gson:gson:2.8.6")
 
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("io.projectreactor:reactor-test")

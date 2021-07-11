@@ -1,13 +1,14 @@
 package com.gogo.steelbotrun.vkbot.event
 
-import com.gogo.steelbotrun.vkbot.JSON
+import com.gogo.steelbotrun.vkbot.json.JSON
+import com.gogo.steelbotrun.vkbot.json.JSONJackson
 
 open class Event(receivedData: String) {
 	val type: String
 	val json: JSON
 
 	init {
-		json = JSON(receivedData)
+		json = JSONJackson(receivedData)
 		type = json.get("type")
 	}
 

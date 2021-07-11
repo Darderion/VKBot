@@ -1,7 +1,5 @@
 package com.gogo.steelbotrun.vkbot.event
 
-import com.gogo.steelbotrun.vkbot.JSON
-
 class EventMessage(receivedData: String): Event(receivedData) {
 	var date: String
 	var fromId: Int

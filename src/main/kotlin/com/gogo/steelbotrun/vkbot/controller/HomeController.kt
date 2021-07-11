@@ -1,7 +1,6 @@
 package com.gogo.steelbotrun.vkbot.controller
 
-import com.gogo.steelbotrun.vkbot.JSON
-import com.gogo.steelbotrun.vkbot.SDK
+import com.gogo.steelbotrun.vkbot.sdk.SDK
 import com.gogo.steelbotrun.vkbot.Server
 import com.gogo.steelbotrun.vkbot.event.EventBuilder
 import com.gogo.steelbotrun.vkbot.event.EventMessage
@@ -12,6 +11,7 @@ import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
+import java.io.File
 
 @Controller
 class HomeController {
@@ -37,13 +37,11 @@ class HomeController {
         }
 
         if (message is EventMessage) {
-            val serverURL = JSON(SDK.getMessageUploadServer(message.fromId)).getJSON("response").get("upload_url")
-            println("ServerURL: ${serverURL}")
-            val response = SDK.uploadPhoto(
-                serverURL,
-                "C:\\Users\\Dio\\Downloads\\n12.jpg"
+            SDK.send(
+                message.text,
+                message.fromId,
+                listOf("images/fighting1.gif")
             )
-            println("Response: ${response}")
         }
 
         return ResponseEntity("OK", HttpStatus.OK)

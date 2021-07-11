@@ -9,10 +9,17 @@ import java.util.*
 class VkbotApplication
 
 fun main(args: Array<String>) {
-	ImageGenerator.merge(listOf(
-		"images/1.gif",
-		"images/2.gif"
-	))
+	val generateImage = false
 
-	// runApplication<VkbotApplication>(*args)
+	if (generateImage) {
+		ImageGenerator.mergeImages(
+			listOf(
+				"images/1.gif",
+				"images/3.gif",
+				"images/4.gif"
+			), listOf(3), listOf(null)
+		)
+	} else {
+		runApplication<VkbotApplication>(*args)
+	}
 }

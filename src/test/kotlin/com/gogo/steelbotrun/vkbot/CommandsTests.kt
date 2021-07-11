@@ -4,7 +4,10 @@ import com.gogo.steelbotrun.vkbot.command.Lexer
 import com.gogo.steelbotrun.vkbot.command.Message
 import com.gogo.steelbotrun.vkbot.command.Parser
 import io.kotest.core.spec.style.StringSpec
+import io.kotest.matchers.comparables.shouldBeEqualComparingTo
 import io.kotest.matchers.ints.shouldBeExactly
+import io.kotest.matchers.ints.shouldBeGreaterThanOrEqual
+import io.kotest.matchers.ints.shouldBeLessThanOrEqual
 
 class CommandsTests : StringSpec({
 	"Lexer should return correct tokens" {

@@ -47,7 +47,7 @@ class Fight {
 				if (Random.roll(defendingMove!!.getEffect(Dodge, bodyPart)))
 					continue
 
-				var attack = attackingMove!!.getEffect(Attack, bodyPart) - defendingMove!!.getEffect(Block, bodyPart)
+				var attack = attackingMove!!.getEffect(Attack, bodyPart) - defendingMove.getEffect(Block, bodyPart)
 				if (attack > 0) {
 					attack += defendingMove.getEffect(Penalty, bodyPart)
 					damage += attack
