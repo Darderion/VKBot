@@ -52,15 +52,21 @@ class SDK {
 		 * @param message Text that needs to be sent to the user
 		 * @param userId User ID
 		 * @param attachments List of file paths to attachments
+		 * @param keyboard Keyboard
 		 * @return Response
 		 */
-		fun send(message: String, userId: Int, attachments: List<String> = listOf()): String {
+		fun send(message: String,
+				 userId: Int,
+				 attachments: List<String> = listOf(),
+				 keyboard: String? = null
+		): String {
 			val messageToken = Date().time.toInt()
 			val attachmentsURL = attachments.map {
 				uploadFile(it, userId)
 			}.map {
 				"attachment=${it}"
-			}.joinToString("&")
+			}.joinToString("&") + if (attachments.isNotEmpty()) "&" else ""
+			val keyboardUrl = if (keyboard != null) "keyboard=${keyboard}&" else ""
 
 			val url = "${vkapi}messages.send?" +
 					"message=${message}&" +
@@ -68,7 +74,8 @@ class SDK {
 					"access_token=${token}&" +
 					"random_id=${messageToken}&" +
 					"v=${apiVersion}&" +
-					"&${attachmentsURL}"
+					attachmentsURL +
+					keyboardUrl
 			return sendRequest(url)
 		}
 
