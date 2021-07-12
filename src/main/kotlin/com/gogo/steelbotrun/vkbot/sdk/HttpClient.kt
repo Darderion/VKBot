@@ -37,7 +37,7 @@ class HttpClient {
 			url: String,
 			requestType: SDK.RequestType = SDK.RequestType.Get
 		): String {
-			var url = url
+			val url = url
 				.replace(" ", "%20")
 				.replace("'", "%60")
 				.replace("\n", "%0A")

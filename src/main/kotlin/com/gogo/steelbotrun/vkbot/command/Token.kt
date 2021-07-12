@@ -5,4 +5,8 @@ enum class TokenType {
 }
 
 class Token(val text: String, val type: TokenType) {
+	companion object {
+		val NewLineTokens = listOf(",", ";")
+		val Delimiters = listOf(" ")
+	}
 }

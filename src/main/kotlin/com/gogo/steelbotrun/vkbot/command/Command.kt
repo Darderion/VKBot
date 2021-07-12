@@ -20,14 +20,14 @@ class Command(tokens: List<Token>) {
 		type = if (command.text == "attack") Attack else Fight
 
 		arguments = tokens.filter { it != command }.map { it.text }
-		if (arguments.count() != numberOfArguments(type)) throw Error("Incorrect number of arguments")
+		if (!checkArgumentsCount(type, arguments)) throw Error("Incorrect number of arguments")
 	}
 
 	companion object {
-		fun numberOfArguments(command: CommandType) = when(command) {
-			Attack -> 1
-			Fight -> 1
-			ChangeAccountName -> 1
+		fun checkArgumentsCount(command: CommandType, arguments: List<String>) = when(command) {
+			Attack -> arguments.count() == 1
+			Fight -> arguments.count() == 1
+			ChangeAccountName -> arguments.count() == 1
 		}
 	}
 }

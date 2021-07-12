@@ -20,22 +20,32 @@ class JSONJackson : JSON {
 	override fun getJSON(jsonPath: String): JSON {
 		if (jsonPath.contains("/")) {
 			val jsonText = jsonPath.split("/")
-			return this.getJSON(jsonText.first()).getJSON(jsonPath.substring(jsonPath.indexOf("/") + 1))
+			return this.getJSON(jsonText.first())
+				.getJSON(jsonPath.substring(jsonPath.indexOf("/") + 1))
 		}
 		val jsonBody = jsonNode.get(jsonPath)
-			?: throw Error("No node named ${jsonPath} found")
+			?: throw Error("No node named $jsonPath found")
 		return JSONJackson(jsonBody)
 	}
 
-	override fun get(propertyName: String) = jsonNode.get(propertyName)?.toString()?.replace("\"", "")
+	override fun get(propertyName: String) =
+		jsonNode.get(propertyName)?.toString()?.replace("\"", "")
 		?: throw Error("No text found")
 
 	override fun getInt(propertyName: String): Int {
 		val jsonProperty = jsonNode.get(propertyName)
-			?: throw Error("No ${propertyName} found")
-		val propertyValue = if (jsonProperty.isNumber) jsonProperty.intValue()
-		else throw Error("${propertyName} is not a number")
+			?: throw Error("No $propertyName found")
 
-		return propertyValue
+		return if (jsonProperty.isNumber) jsonProperty.intValue()
+		else throw Error("$propertyName is not a number")
+	}
+
+	override fun contains(jsonPath: String): Boolean {
+		if (jsonPath.contains("/")) {
+			val jsonText = jsonPath.split("/")
+			return this.getJSON(jsonText.first())
+				.contains(jsonPath.substring(jsonPath.indexOf("/") + 1))
+		}
+		return jsonNode.has(jsonPath)
 	}
 }

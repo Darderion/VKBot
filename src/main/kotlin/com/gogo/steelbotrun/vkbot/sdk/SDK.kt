@@ -33,7 +33,7 @@ class SDK {
 			val fileResponse = sendMultiPartFormRequest(uploadUrl, path)
 
 			val fileJSON = JSONGoogle(fileResponse).get("file")
-			val fileData = HttpClient.sendRequest(
+			val fileData = sendRequest(
 				"${vkapi}docs.save?" +
 						"&file=${fileJSON}" +
 						"&title=fighting.gif" +
@@ -63,9 +63,9 @@ class SDK {
 			val messageToken = Date().time.toInt()
 			val attachmentsURL = attachments.map {
 				uploadFile(it, userId)
-			}.map {
+			}.joinToString("&") {
 				"attachment=${it}"
-			}.joinToString("&") + if (attachments.isNotEmpty()) "&" else ""
+			} + if (attachments.isNotEmpty()) "&" else ""
 			val keyboardUrl = if (keyboard != null) "keyboard=${keyboard}&" else ""
 
 			val url = "${vkapi}messages.send?" +
