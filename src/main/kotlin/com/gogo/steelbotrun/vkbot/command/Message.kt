@@ -1,12 +1,7 @@
 package com.gogo.steelbotrun.vkbot.command
 
-class Message(tokens: List<Token>) {
-	val tokens: List<Token>
-	init {
-		this.tokens = if (tokens[tokens.count() - 1].type != TokenType.NewLine) {
-			tokens + Token(",", TokenType.NewLine)
-		} else {
-			tokens
-		}
-	}
+import com.gogo.steelbotrun.vkbot.event.MessageInfo
+
+class Message(val info: MessageInfo, text: String) {
+	val commands: List<Command> = Parser.getCommands(Lexer.getTokens(text))
 }

@@ -39,7 +39,7 @@ class HomeController {
         if (message is EventMessage) {
             SDK.send(
                 message.text,
-                message.fromId,
+                message.info.fromId,
                 listOf("images/fighting1.gif")
             )
         }

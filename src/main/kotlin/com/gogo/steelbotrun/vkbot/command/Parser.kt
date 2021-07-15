@@ -16,13 +16,19 @@ class Parser {
 			Pair(CommandStack, NewLine) to CommandDeclaration
 		)
 
-		fun getCommands(message: Message): List<Command> {
+		fun getCommands(tokens: List<Token>): List<Command> {
+			val message = if (tokens[tokens.count() - 1].type != TokenType.NewLine) {
+				tokens + Token(",", TokenType.NewLine)
+			} else {
+				tokens
+			}
+
 			if (!check(message)) throw Error("Incorrect message body")
 
 			val commands: MutableList<Command> = mutableListOf()
 
 			val command: MutableList<Token> = mutableListOf()
-			for(token in message.tokens) {
+			for(token in message) {
 				if (token.type == NewLine) {
 					if (command.isNotEmpty()) {
 						commands.add(Command(command))
@@ -35,10 +41,10 @@ class Parser {
 			return commands
 		}
 
-		fun check(message: Message): Boolean {
+		private fun check(tokens: List<Token>): Boolean {
 			var currentState = CommandDeclaration
 
-			for (token in message.tokens) {
+			for (token in tokens) {
 				val currentPair = Pair(currentState, token.type)
 				if (!stateMachine.containsKey(currentPair)) {
 					return false
