@@ -80,6 +80,19 @@ class SDK {
 		}
 
 		/**
+		 * Get info about user using shortcut profile name or user ID
+		 * @param profileIdentifier User ID or User shortcut profile name
+		 * @return profile info
+		 */
+		fun getUserInfo(profileIdentifier: String): String {
+			val url = "${vkapi}users.get?" +
+					"user_ids=${profileIdentifier}&" +
+					"access_token=${token}&" +
+					"v=${apiVersion}"
+			return sendRequest(url)
+		}
+
+		/**
 		 * Sends a message
 		 * @param message Text that needs to be sent to the users
 		 * @param users List of user IDs

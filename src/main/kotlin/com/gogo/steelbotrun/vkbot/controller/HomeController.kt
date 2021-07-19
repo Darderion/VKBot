@@ -4,6 +4,7 @@ import com.gogo.steelbotrun.vkbot.sdk.SDK
 import com.gogo.steelbotrun.vkbot.Server
 import com.gogo.steelbotrun.vkbot.event.EventBuilder
 import com.gogo.steelbotrun.vkbot.event.EventMessage
+import com.gogo.steelbotrun.vkbot.keyboard.*
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -27,22 +28,29 @@ class HomeController {
     @PostMapping("/callback")
     fun postRequest(@RequestBody request: String): ResponseEntity<String> {
         val eventBuilder = EventBuilder()
-
         // Constructs an appropriate event depending on the request's body
         val message = eventBuilder.getEvent(request)
         val response = message.response()
+
+		server.process(message)
 
         if (response != null) {
             return ResponseEntity(response, HttpStatus.OK)
         }
 
-        if (message is EventMessage) {
-            SDK.send(
-                message.text,
-                message.info.fromId,
-                listOf("images/fighting1.gif")
-            )
-        }
+//		if (message is EventMessage) {
+//            SDK.send(
+//                message.text,
+//                message.info.fromId,
+//				keyboard = Keyboard(false,
+//						mutableListOf(
+//								mutableListOf(
+//										Button(Action(label = "принять"), "positive"),
+//										Button(Action(label = "отклонить"), "negative"))
+//						),
+//						true).toString()
+//            )
+//        }
 
         return ResponseEntity("OK", HttpStatus.OK)
     }

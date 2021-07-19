@@ -4,7 +4,7 @@ import com.gogo.steelbotrun.vkbot.command.CommandType.*
 import java.lang.Error
 
 enum class CommandType {
-	Attack, Fight, ChangeAccountName
+	Attack, Fight, ChangeAccountName, Greeting, Duel
 }
 
 class Command(tokens: List<Token>) {
@@ -17,7 +17,8 @@ class Command(tokens: List<Token>) {
 		if (commandList.count() > 1) throw Error("Too many commands found")
 
 		val command = commandList.first()
-		type = if (command.text == "attack") Attack else Fight
+		type = if (command.text == "attack") Attack
+		else if (command.text == "duel") Duel else Fight
 
 		arguments = tokens.filter { it != command }.map { it.text }
 		if (!checkArgumentsCount(type, arguments)) throw Error("Incorrect number of arguments")
@@ -28,6 +29,8 @@ class Command(tokens: List<Token>) {
 			Attack -> arguments.count() == 1
 			Fight -> arguments.count() == 1
 			ChangeAccountName -> arguments.count() == 1
+			Greeting -> arguments.count() == 0
+			Duel -> arguments.count() == 1
 		}
 	}
 }
