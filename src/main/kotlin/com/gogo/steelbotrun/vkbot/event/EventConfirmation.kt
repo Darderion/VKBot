@@ -1,14 +1,8 @@
 package com.gogo.steelbotrun.vkbot.event
 
-const val VKConfirmationToken = "db95cd2e"
-// 1e82f06d
-// c0451885
-// d2b2e55b
-// 00011fbf
-// a85287d7
-// 22f9fcc0
-// 80ae03d1
-// 1e82f06d
+import java.io.File
+
+var VKConfirmationToken = File("${System.getProperty("user.dir")}/BotInfo.txt").readLines()[2]
 
 class EventConfirmation(receivedData: String): Event(receivedData) {
 	override fun response() = VKConfirmationToken

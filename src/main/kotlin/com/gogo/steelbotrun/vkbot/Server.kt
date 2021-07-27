@@ -12,10 +12,19 @@ import org.springframework.stereotype.Component
 
 @Component
 class Server (
-	val fights: MutableList<Fight> = mutableListOf(Fight(mutableListOf())),
-	val pendingRequests: MutableList<Request> = mutableListOf(),
-	val players: HashMap<String, String> = hashMapOf()
+	val fights: MutableList<Fight> = mutableListOf(),
+	val requests: MutableList<Request> = mutableListOf(),
+	val players: HashMap<String, String> = hashMapOf(),
+	private val sdk: SDK = SDK()
 ) {
+	private val log = mutableListOf("Server log")
+	private fun log(text: String) {
+		log.add(text)
+	}
+	fun log() {
+		log.forEach { println(it) }
+	}
+
 	fun process(event: Event): String {
 		val response = event.response()
 		if (response != null) return response
@@ -26,22 +35,29 @@ class Server (
 		}
 	}
 
-	fun process(event: EventMessage): String {
+	private fun process(event: EventMessage): String {
 		when {
 			event.text.contains("duel") -> {
-				pendingRequests.add(RequestBuilder.createRequest(Message(event.info, event.text)))
-				SDK.send("Ваш запрос успешно создан", event.info.fromId)
+				log("Player ${event.info.fromId} sent duel request")
+				requests.add(RequestBuilder.createRequest(Message(event.info, event.text)))
+				sdk.send("Ваш запрос успешно создан", event.info.fromId)
 			}
 		}
 
 		if (event.info.payload != null) {}
 
-		return ""
+		return "OK"
 	}
 
-	fun changeName(playerId: String, name: String) {
+	fun changeName(playerId: String, name: String): Boolean {
+		if (!players.containsKey(playerId)) {
+			return false
+		}
+
 		players[playerId] = name
 		fights.forEach { it.participants.firstOrNull { it is Player && it.id == playerId }?.name = name }
+
+		return true
 	}
 
 	fun findFight(playerId: String) = fights.firstOrNull { it.participants.filter { it is Player && it.id == playerId }.isNotEmpty() }
