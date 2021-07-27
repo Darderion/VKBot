@@ -16,17 +16,19 @@ import java.io.File
 
 @Controller
 class HomeController {
-
     @Autowired
     lateinit var server: Server
 
     @GetMapping("/callback")
     fun index(): ResponseEntity<String> {
+        println("Get request")
         return ResponseEntity("Some text", HttpStatus.OK)
     }
 
     @PostMapping("/callback")
     fun postRequest(@RequestBody request: String): ResponseEntity<String> {
+        println("Request: $request")
+
         val eventBuilder = EventBuilder()
         // Constructs an appropriate event depending on the request's body
         val message = eventBuilder.getEvent(request)

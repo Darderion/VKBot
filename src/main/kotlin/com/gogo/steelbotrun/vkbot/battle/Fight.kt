@@ -10,12 +10,12 @@ import com.gogo.steelbotrun.vkbot.battle.fighters.Player
 import com.gogo.steelbotrun.vkbot.battle.fighters.monsters.BasicMonster
 import com.gogo.steelbotrun.vkbot.battle.fighters.monsters.Monster
 
-class Fight {
+class Fight(participants: MutableList<Fighter>) {
 	val participants: MutableList<Fighter> = mutableListOf()
 
-	var step = 1
+	private var step = 1
 
-	constructor(participants: MutableList<Fighter>) {
+	init {
 		this.participants.addAll(participants)
 	}
 
