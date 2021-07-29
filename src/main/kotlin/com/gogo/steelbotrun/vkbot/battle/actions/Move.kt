@@ -6,4 +6,6 @@ class Move(val name: String, private val effects: List<SimpleAction>) {
 			?: 0
 	fun getAffectedAreas(type: ActionType): List<Area> =
 		effects.filter { it.type == type }.map { it.area }
+
+	override fun toString() = "Move: $name; Effects: " + effects.joinToString(", ")
 }
