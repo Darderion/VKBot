@@ -14,25 +14,34 @@ class MovesRepository(filePath: String = "/src/main/resources/static/moves.txt")
 
 		var moveName = ""
 		val moveActions = mutableListOf<SimpleAction>()
+		var description = ""
 
 		movesText.forEach {
 			if (it.contains(":")) {
 				if (moveActions.count() != 0) {
-					moves.add(Move(moveName, moveActions))
+					moves.add(Move(moveName, moveActions, description))
+					description = ""
 				}
 				moveName = it.replace(":", "")
 			} else {
-				val moveAction = it.split(" ", "\t").map { it.trim() }.filter { it.isNotEmpty() }
+				if (it.contains("\"")) {
+					if (it.length <= 2 || it[0] != '\"' || it[it.length - 1] != '\"') {
+						throw Error("Description of a move is not written as \"description\"")
+					}
+					description = it.replace("\"", "")
+				} else {
+					val moveAction = it.split(" ", "\t").map { it.trim() }.filter { it.isNotEmpty() }
 
-				if (moveAction.count() != 3) throw Error("\"$it\" move action contains K spaces, K != 2, K = ${moveAction.count()}")
+					if (moveAction.count() != 3) throw Error("\"$it\" move action contains K spaces, K != 2, K = ${moveAction.count()}")
 
-				moveActions.add(
-					SimpleAction(
-						ActionType.valueOf(toEnumString(moveAction[0])),
-						Area.valueOf(toEnumString(moveAction[1])),
-						moveAction[2].toInt()
+					moveActions.add(
+						SimpleAction(
+							ActionType.valueOf(toEnumString(moveAction[0])),
+							Area.valueOf(toEnumString(moveAction[1])),
+							moveAction[2].toInt()
+						)
 					)
-				)
+				}
 			}
 		}
 	}
