@@ -27,5 +27,8 @@ class CommandsTests : StringSpec({
 
 		val message2 = Message(messageInfo, "Function Argument1, Function2 Argument2")
 		message2.commands.count() shouldBeExactly 2
+
+		val message3 = Message(messageInfo, "Function Argument1;Function2 Argument2")
+		message3.commands.count() shouldBeExactly 2
 	}
 })

@@ -19,8 +19,9 @@ class MovesRepository(filePath: String = "/src/main/resources/static/moves.txt")
 		movesText.forEach {
 			if (it.contains(":")) {
 				if (moveActions.count() != 0) {
-					moves.add(Move(moveName, moveActions, description))
+					moves.add(Move(moveName, moveActions.toList(), description))
 					description = ""
+					moveActions.clear()
 				}
 				moveName = it.replace(":", "")
 			} else {

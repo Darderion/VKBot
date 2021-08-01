@@ -1,5 +1,7 @@
 package com.gogo.steelbotrun.vkbot
 
+import com.gogo.steelbotrun.vkbot.battle.actions.ActionType
+import com.gogo.steelbotrun.vkbot.battle.actions.Area
 import com.gogo.steelbotrun.vkbot.battle.actions.MovesRepository
 import com.gogo.steelbotrun.vkbot.command.Lexer
 import com.gogo.steelbotrun.vkbot.command.Lexer.Companion.replaceNewLineTokens
@@ -14,5 +16,12 @@ class FightingTests : StringSpec({
 		val moves = MovesRepository("/src/test/resources/static/test_moves.txt").moves()
 
 		moves.first().name shouldBeEqualComparingTo "Kick"
+		moves[1].name shouldBeEqualComparingTo "Side Kick"
+
+		moves.first().getEffect(ActionType.Attack, Area.Body) shouldBeExactly 15
+		moves[1].getEffect(ActionType.Attack, Area.Body) shouldBeExactly 0
+
+		moves.first().description shouldBeEqualComparingTo "Kick from Karate movies"
+		moves[1].description shouldBeEqualComparingTo "Cool move from fighting on ps3"
 	}
 })
