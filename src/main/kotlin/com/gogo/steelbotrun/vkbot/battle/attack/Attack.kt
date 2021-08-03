@@ -1,4 +1,6 @@
 package com.gogo.steelbotrun.vkbot.battle.attack
 
-class Attack(val value: AttackScaling, val critical: AttackScaling) {
+import com.gogo.steelbotrun.vkbot.character.stats.StatScaling
+
+class Attack(val value: StatScaling, val critical: StatScaling) {
 }
