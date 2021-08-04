@@ -16,29 +16,29 @@ import java.io.File
 
 @Controller
 class HomeController {
-    @Autowired
-    lateinit var server: Server
+	@Autowired
+	lateinit var server: Server
 
-    @GetMapping("/callback")
-    fun index(): ResponseEntity<String> {
-        println("Get request")
-        return ResponseEntity("Some text", HttpStatus.OK)
-    }
+	@GetMapping("/callback")
+	fun index(): ResponseEntity<String> {
+		println("Get request")
+		return ResponseEntity("Some text", HttpStatus.OK)
+	}
 
-    @PostMapping("/callback")
-    fun postRequest(@RequestBody request: String): ResponseEntity<String> {
-        println("Request: $request")
+	@PostMapping("/callback")
+	fun postRequest(@RequestBody request: String): ResponseEntity<String> {
+		println("Request: $request")
 
-        val eventBuilder = EventBuilder()
-        // Constructs an appropriate event depending on the request's body
-        val message = eventBuilder.getEvent(request)
-        val response = message.response()
+		val eventBuilder = EventBuilder()
+		// Constructs an appropriate event depending on the request's body
+		val message = eventBuilder.getEvent(request)
+		val response = message.response()
 
 		server.process(message)
 
-        if (response != null) {
-            return ResponseEntity(response, HttpStatus.OK)
-        }
+		if (response != null) {
+			return ResponseEntity(response, HttpStatus.OK)
+		}
 
 //		if (message is EventMessage) {
 //            SDK.send(
@@ -54,6 +54,6 @@ class HomeController {
 //            )
 //        }
 
-        return ResponseEntity("OK", HttpStatus.OK)
-    }
+		return ResponseEntity("OK", HttpStatus.OK)
+	}
 }

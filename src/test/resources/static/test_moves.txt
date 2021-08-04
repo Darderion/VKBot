@@ -1,0 +1,24 @@
+
+# List of moves
+# Comments start with '#'
+# Empty lines are ignored
+# Move is described using following template:
+
+# MoveName:
+# ActionName1 AreaName1 ActionPower1
+# ActionName2 AreaName2 ActionPower2
+# ...
+# ActionNameK AreaNameK ActionPowerK
+# "Description"
+
+Kick:
+	attack  body 15
+	dodge   head 20
+	penalty legs 15
+"Kick from Karate movies"
+
+Side Kick:
+	attack  head 20
+	dodge   head 30
+	penalty legs 30
+"Cool move from fighting on ps3"
