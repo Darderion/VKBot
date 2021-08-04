@@ -2,7 +2,7 @@ package com.gogo.steelbotrun.vkbot.character.stats
 
 import java.io.File
 
-class StatsRepository(filePath: String = "/src/main/resources/static/stats.txt") {
+class StatsRepository(filePath: String = "/src/test/resources/static/test_stats.txt") {
 
 	private val stats: Map<String, Int> = File("${System.getProperty("user.dir")}$filePath").readLines()
 		.asSequence()
@@ -13,5 +13,4 @@ class StatsRepository(filePath: String = "/src/main/resources/static/stats.txt")
 		.associateBy({ it.first }, { it.second })
 
 	fun stats() = stats.toMap()
-
 }

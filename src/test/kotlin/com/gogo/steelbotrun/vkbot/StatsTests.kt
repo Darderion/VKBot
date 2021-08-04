@@ -8,16 +8,6 @@ import io.kotest.matchers.ints.shouldBeExactly
 import java.lang.Error
 
 class StatsTests : StringSpec({
-	"Stats should not initialize StatsRepository more than once" {
-		Stats.setup("/src/test/resources/static/test_stats.txt")
-		var exceptionCaught = false
-		try {
-			Stats.setup("/src/test/resources/static/test_stats.txt")
-		} catch (e: Error) {
-			exceptionCaught = true
-		}
-		exceptionCaught shouldBeEqualComparingTo true
-	}
 	"Stats' companion object should contain stats from file" {
 		Stats.length shouldBeExactly 3
 	}
@@ -40,5 +30,9 @@ class StatsTests : StringSpec({
 		stats[0] shouldBeExactly 3.0
 		stats[1] shouldBeExactly 5.0
 		stats[2] shouldBeExactly 8.0
+	}
+	"Stats' sum should be equal to sum of Stat's elements" {
+		val a = Stats(listOf(1.0, 2.0, 5.0))
+		a.sum shouldBeExactly 8.0
 	}
 })
