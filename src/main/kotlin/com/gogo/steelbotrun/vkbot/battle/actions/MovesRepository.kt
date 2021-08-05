@@ -1,5 +1,6 @@
 package com.gogo.steelbotrun.vkbot.battle.actions
 
+import com.gogo.steelbotrun.vkbot.character.stats.Stats
 import java.io.File
 import java.lang.Error
 
@@ -15,6 +16,7 @@ class MovesRepository(filePath: String = "/src/main/resources/static/moves.txt")
 		var moveName = ""
 		val moveActions = mutableListOf<SimpleAction>()
 		var description = ""
+		val moveStats = mutableListOf<Pair<String, Double>>()
 
 		movesText.forEach {
 			if (it.contains(":")) {
@@ -33,13 +35,18 @@ class MovesRepository(filePath: String = "/src/main/resources/static/moves.txt")
 				} else {
 					val moveAction = it.split(" ", "\t").map { it.trim() }.filter { it.isNotEmpty() }
 
-					if (moveAction.count() != 3) throw Error("\"$it\" move action contains K spaces, K != 2, K = ${moveAction.count()}")
+					if (moveAction.count() < 3 || moveAction.count() % 2 != 1) throw Error("\"$it\" move action contains K spaces, K != 2 + 2*j, K = ${moveAction.count()}")
+
+					moveAction.forEachIndexed { index, stat ->
+						if (index > 2 && index % 2 == 1) moveStats.add(stat to moveAction[index + 1].toDouble())
+					}
 
 					moveActions.add(
 						SimpleAction(
 							ActionType.valueOf(toEnumString(moveAction[0])),
 							Area.valueOf(toEnumString(moveAction[1])),
-							moveAction[2].toInt()
+							moveAction[2].toDouble(),
+							Stats(*moveStats.toTypedArray())
 						)
 					)
 				}

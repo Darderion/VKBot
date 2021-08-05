@@ -9,6 +9,7 @@ import com.gogo.steelbotrun.vkbot.battle.fighters.Fighter
 import com.gogo.steelbotrun.vkbot.battle.fighters.Player
 import com.gogo.steelbotrun.vkbot.battle.fighters.monsters.BasicMonster
 import com.gogo.steelbotrun.vkbot.battle.fighters.monsters.Monster
+import kotlin.math.roundToInt
 
 class Fight(participants: MutableList<Fighter>) {
 	val participants: MutableList<Fighter> = mutableListOf()
@@ -35,7 +36,7 @@ class Fight(participants: MutableList<Fighter>) {
 		)
 
 		for (attackerAndDefender in pairs) {
-			var damage = 0
+			var damage = 0.0
 
 			val attacker = attackerAndDefender.first
 			val defender = attackerAndDefender.second
@@ -56,7 +57,7 @@ class Fight(participants: MutableList<Fighter>) {
 
 			round += "${attacker.name} casts ${attacker.selectedMove!!.name} and deals ${if (damage > 0) damage else "no"} damage\n"
 
-			defender.hp = defender.hp - damage
+			defender.hp = (defender.hp - damage).roundToInt()
 		}
 
 		participants.forEach {

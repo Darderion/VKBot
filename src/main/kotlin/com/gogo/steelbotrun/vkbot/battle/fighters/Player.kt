@@ -9,12 +9,12 @@ class Player(name: String, val id: String): Fighter(name,
 	listOf(Head, Body, Legs),
 	listOf(
 		Move("Nitoryu: Dragon's Fangs", listOf(
-			SimpleAction(Dodge, Head, 100),
-			SimpleAction(Attack, Body, 10),
-			SimpleAction(Penalty, Legs, 5)
+			SimpleAction(Dodge, Head, 100.0),
+			SimpleAction(Attack, Body, 10.0),
+			SimpleAction(Penalty, Legs, 5.0)
 		)),
 		Move("Block", listOf(
-			SimpleAction(Block, Body, 20)
+			SimpleAction(Block, Body, 20.0)
 		))
 	)
 )
