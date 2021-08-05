@@ -18,6 +18,13 @@ class SDK(private val token: String = file_token) {
 		Get, Post
 	}
 
+
+	/**
+	 * Upload a file
+	 * @param path Path to file
+	 * @param userId Receiver ID
+	 * @return An object with "Upload URL" field
+	 */
 	private fun uploadFile(path: String, userId: Int): Attachment {
 		val getUploadServer = sendRequest(
 			"${vkapi}docs.getMessagesUploadServer?" +

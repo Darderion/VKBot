@@ -20,6 +20,11 @@ class Fight(participants: MutableList<Fighter>) {
 		this.participants.addAll(participants)
 	}
 
+
+	/**
+	 * Update battle round by checking ready state of participants and performing combat
+	 * @return Response
+	 */
 	fun update(): String {
 		if (participants.count() != 2) return "Fight contains ${participants.count()} participants"
 
