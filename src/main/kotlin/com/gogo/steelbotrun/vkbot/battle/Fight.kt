@@ -1,14 +1,10 @@
 package com.gogo.steelbotrun.vkbot.battle
 
 import com.gogo.steelbotrun.vkbot.Random
-import com.gogo.steelbotrun.vkbot.battle.actions.Move
 import com.gogo.steelbotrun.vkbot.battle.actions.ActionType.*
-import com.gogo.steelbotrun.vkbot.battle.actions.Area.*
-import com.gogo.steelbotrun.vkbot.battle.actions.SimpleAction
 import com.gogo.steelbotrun.vkbot.battle.fighters.Fighter
-import com.gogo.steelbotrun.vkbot.battle.fighters.Player
-import com.gogo.steelbotrun.vkbot.battle.fighters.monsters.BasicMonster
-import com.gogo.steelbotrun.vkbot.battle.fighters.monsters.Monster
+import com.gogo.steelbotrun.vkbot.event.MessageResponse
+import com.gogo.steelbotrun.vkbot.event.MessageResponseType.*
 import kotlin.math.roundToInt
 
 class Fight(participants: MutableList<Fighter>) {
@@ -25,12 +21,18 @@ class Fight(participants: MutableList<Fighter>) {
 	 * Update battle round by checking ready state of participants and performing combat
 	 * @return Response
 	 */
-	fun update(): String {
-		if (participants.count() != 2) return "Fight contains ${participants.count()} participants"
+	fun update(): MessageResponse {
+		if (participants.count() != 2) return MessageResponse(
+			"Fight contains ${participants.count()} participants",
+			Sender
+		)
 
 		val fightersChoosingMoves = participants.filter { it.selectedMove == null }
 		if (fightersChoosingMoves.isNotEmpty()) {
-			return "Fighter ${fightersChoosingMoves.first().name} is still choosing a move"
+			return MessageResponse(
+				"Fighter ${fightersChoosingMoves.first().name} is still choosing a move",
+				Sender
+			)
 		}
 
 		var round = "Round ${step}:\n"
@@ -69,6 +71,6 @@ class Fight(participants: MutableList<Fighter>) {
 			it.nextRound()
 		}
 		step++
-		return round
+		return MessageResponse(round, All)
 	}
 }

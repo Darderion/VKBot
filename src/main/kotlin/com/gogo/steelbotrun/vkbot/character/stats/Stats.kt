@@ -1,6 +1,5 @@
 package com.gogo.steelbotrun.vkbot.character.stats
 
-import java.io.File
 import kotlin.Error
 
 class Stats {

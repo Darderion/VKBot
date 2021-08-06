@@ -9,7 +9,7 @@ import com.gogo.steelbotrun.vkbot.command.Parser
 import com.gogo.steelbotrun.vkbot.event.Event
 import com.gogo.steelbotrun.vkbot.event.EventMessage
 import com.gogo.steelbotrun.vkbot.request.Request
-import com.gogo.steelbotrun.vkbot.request.RequestBuilder
+import com.gogo.steelbotrun.vkbot.request.RequestFactory
 import com.gogo.steelbotrun.vkbot.sdk.SDK
 import org.springframework.stereotype.Component
 
@@ -33,20 +33,18 @@ class Server (
 		if (response != null) return response
 
 		return when(event) {
-			is EventMessage -> process(event)
+			is EventMessage -> process(Message(event))
 			else -> "Unknown event type: ${event.type}"
 		}
 	}
 
-	private fun process(event: EventMessage): String {
-		val commands = Parser.getCommands(Lexer.getTokens(event.text))
-
-		commands.forEach {
+	private fun process(message: Message): String {
+		message.commands.forEach {
 			when(it.type) {
 				CommandType.Duel -> {
-					log("Player ${event.info.fromId} sent duel request")
-					requests.add(RequestBuilder.createRequest(Message(event.info, event.text)))
-					sdk.send("Ваш запрос успешно создан", event.info.fromId)
+					log("Player ${message.info.fromId} sent duel request")
+					requests.add(RequestFactory.createRequest(message))
+					sdk.send("Ваш запрос успешно создан", message.info.fromId)
 				}
 			}
 		}

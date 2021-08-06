@@ -3,7 +3,7 @@ package com.gogo.steelbotrun.vkbot.event
 import org.springframework.stereotype.Component
 
 @Component
-class EventBuilder {
+class EventFactory {
 	fun getEvent(receivedData: String): Event {
 		val event = Event(receivedData)
 		return when(event.type) {

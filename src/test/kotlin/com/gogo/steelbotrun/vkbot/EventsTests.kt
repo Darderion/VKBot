@@ -1,12 +1,10 @@
 package com.gogo.steelbotrun.vkbot
 
-import com.gogo.steelbotrun.vkbot.command.Lexer.Companion.replaceNewLineTokens
-import com.gogo.steelbotrun.vkbot.event.EventBuilder
+import com.gogo.steelbotrun.vkbot.event.EventFactory
 import com.gogo.steelbotrun.vkbot.sdk.SDK
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.comparables.shouldBeEqualComparingTo
 import io.mockk.every
-import io.mockk.impl.annotations.MockK
 import io.mockk.mockk
 
 class EventsTests : StringSpec({
@@ -16,7 +14,7 @@ class EventsTests : StringSpec({
 		val server = Server(sdk = sdk)
 		server.fights.count() shouldBeEqualComparingTo 0
 		server.requests.count() shouldBeEqualComparingTo 0
-		val eventBuilder = EventBuilder()
+		val eventBuilder = EventFactory()
 		val messageEvent = eventBuilder.getEvent(userMessage("duel 2"))
 		server.process(messageEvent)
 

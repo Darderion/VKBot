@@ -2,7 +2,7 @@ package com.gogo.steelbotrun.vkbot.request
 
 import com.gogo.steelbotrun.vkbot.command.Message
 
-class RequestBuilder {
+class RequestFactory {
 	companion object {
 		fun createRequest(message: Message) = when {
 			//need check for requests
