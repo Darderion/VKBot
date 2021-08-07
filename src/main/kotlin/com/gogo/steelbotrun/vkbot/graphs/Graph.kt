@@ -2,7 +2,7 @@ package com.gogo.steelbotrun.vkbot.graphs
 
 import java.lang.Error
 
-class Graph<T>: Identifiable() {
+open class Graph<T>: Identifiable() {
 	val nodes: HashSet<GraphNode<T>> = hashSetOf()
 	val edges: HashMap<Int, HashSet<Int>> = hashMapOf()
 
@@ -37,6 +37,8 @@ class Graph<T>: Identifiable() {
 	 * @return Value of a node
 	 */
 	fun find(id: Int) = nodes.first { it.id == id }.value
+
+	fun get(id: Int) = find(id)
 
 	fun addEdge(fromNodeId: Int, toNodeId: Int) {
 		edges[fromNodeId]!!.add(toNodeId)
