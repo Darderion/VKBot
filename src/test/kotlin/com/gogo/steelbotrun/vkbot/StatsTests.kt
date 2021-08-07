@@ -1,11 +1,9 @@
 package com.gogo.steelbotrun.vkbot
 
-import com.gogo.steelbotrun.vkbot.character.stats.Stats
+import com.gogo.steelbotrun.vkbot.game.character.stats.Stats
 import io.kotest.core.spec.style.StringSpec
-import io.kotest.matchers.comparables.shouldBeEqualComparingTo
 import io.kotest.matchers.doubles.shouldBeExactly
 import io.kotest.matchers.ints.shouldBeExactly
-import java.lang.Error
 
 class StatsTests : StringSpec({
 	"Stats' companion object should contain stats from file" {
