@@ -4,18 +4,18 @@ import java.lang.Error
 
 open class Graph<T>: Identifiable() {
 	val nodes: HashSet<GraphNode<T>> = hashSetOf()
-	val edges: HashMap<Int, HashSet<Int>> = hashMapOf()
+	val edges: HashMap<Int, HashSet<GraphEdge>> = hashMapOf()
 
 	/**
 	 * Adds a node with value VALUE
 	 * @param value Value of a node
 	 */
-	fun addNode(value: T) {
+	open fun addNode(value: T) {
 		val graphNode = GraphNode(value)
 		addNode(graphNode)
 	}
 
-	private fun addNode(node: GraphNode<T>) {
+	protected fun addNode(node: GraphNode<T>) {
 		nodes.add(node)
 		edges[node.id] = HashSet()
 	}
@@ -40,7 +40,7 @@ open class Graph<T>: Identifiable() {
 
 	fun get(id: Int) = find(id)
 
-	fun addEdge(fromNodeId: Int, toNodeId: Int) {
-		edges[fromNodeId]!!.add(toNodeId)
+	fun addEdge(fromNodeId: Int, toNodeId: Int, text: String = "") {
+		edges[fromNodeId]!!.add(GraphEdge(toNodeId, text))
 	}
 }
