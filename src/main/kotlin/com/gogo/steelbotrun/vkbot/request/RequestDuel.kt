@@ -10,4 +10,8 @@ class RequestDuel(message: Message) : Request(message) {
 		//need check for fights
 		server.fights.add(Fight(mutableListOf()))
 	}
+
+	override fun toString(): String {
+		return "{fromId : ${message.info.fromId}, toId : ${message.commands.first().arguments.first()}}"
+	}
 }

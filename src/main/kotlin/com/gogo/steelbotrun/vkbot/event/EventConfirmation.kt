@@ -1,6 +1,6 @@
 package com.gogo.steelbotrun.vkbot.event
 
-const val VKConfirmationToken = "db95cd2e"
+const val VKConfirmationToken = "7bc28c72"
 // 1e82f06d
 // c0451885
 // d2b2e55b
