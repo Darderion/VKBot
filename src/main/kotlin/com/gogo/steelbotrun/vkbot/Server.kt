@@ -1,16 +1,14 @@
 package com.gogo.steelbotrun.vkbot
 
-import com.gogo.steelbotrun.vkbot.battle.Fight
-import com.gogo.steelbotrun.vkbot.battle.fighters.Player
-import com.gogo.steelbotrun.vkbot.command.CommandType
-import com.gogo.steelbotrun.vkbot.command.Lexer
-import com.gogo.steelbotrun.vkbot.command.Message
-import com.gogo.steelbotrun.vkbot.command.Parser
-import com.gogo.steelbotrun.vkbot.event.Event
-import com.gogo.steelbotrun.vkbot.event.EventMessage
-import com.gogo.steelbotrun.vkbot.request.Request
-import com.gogo.steelbotrun.vkbot.request.RequestFactory
-import com.gogo.steelbotrun.vkbot.sdk.SDK
+import com.gogo.steelbotrun.vkbot.game.battle.Fight
+import com.gogo.steelbotrun.vkbot.game.battle.fighters.Player
+import com.gogo.steelbotrun.vkbot.core.command.CommandType
+import com.gogo.steelbotrun.vkbot.core.command.Message
+import com.gogo.steelbotrun.vkbot.bot.event.Event
+import com.gogo.steelbotrun.vkbot.bot.event.EventMessage
+import com.gogo.steelbotrun.vkbot.bot.request.Request
+import com.gogo.steelbotrun.vkbot.bot.request.RequestFactory
+import com.gogo.steelbotrun.vkbot.bot.sdk.SDK
 import org.springframework.stereotype.Component
 
 @Component

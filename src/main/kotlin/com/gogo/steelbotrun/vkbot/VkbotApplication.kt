@@ -1,10 +1,9 @@
 package com.gogo.steelbotrun.vkbot
 
-import com.gogo.steelbotrun.vkbot.character.stats.Stats
-import com.gogo.steelbotrun.vkbot.gif.ImageGenerator
+import com.gogo.steelbotrun.vkbot.game.character.stats.Stats
+import com.gogo.steelbotrun.vkbot.utils.gif.ImageGenerator
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
-import java.util.*
 
 @SpringBootApplication
 class VkbotApplication

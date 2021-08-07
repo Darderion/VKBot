@@ -1,13 +1,12 @@
 package com.gogo.steelbotrun.vkbot
 
-import com.gogo.steelbotrun.vkbot.battle.actions.ActionType
-import com.gogo.steelbotrun.vkbot.battle.actions.Area
-import com.gogo.steelbotrun.vkbot.battle.actions.MovesRepository
-import com.gogo.steelbotrun.vkbot.character.stats.Stats
+import com.gogo.steelbotrun.vkbot.game.battle.actions.ActionType
+import com.gogo.steelbotrun.vkbot.game.battle.actions.Area
+import com.gogo.steelbotrun.vkbot.game.moves.MovesRepository
+import com.gogo.steelbotrun.vkbot.game.character.stats.Stats
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.comparables.shouldBeEqualComparingTo
 import io.kotest.matchers.doubles.shouldBeExactly
-import io.kotest.matchers.ints.shouldBeExactly
 
 class FightingTests : StringSpec({
 	"Moves Repository should contain moves from file" {

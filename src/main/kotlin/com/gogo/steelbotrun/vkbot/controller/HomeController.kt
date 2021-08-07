@@ -1,7 +1,7 @@
 package com.gogo.steelbotrun.vkbot.controller
 
 import com.gogo.steelbotrun.vkbot.Server
-import com.gogo.steelbotrun.vkbot.event.EventFactory
+import com.gogo.steelbotrun.vkbot.bot.event.EventFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
