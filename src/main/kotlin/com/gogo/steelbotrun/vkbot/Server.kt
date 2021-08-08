@@ -65,10 +65,10 @@ class Server (
 		return ""
 	}
 
-//	fun changeName(playerId: String, name: String) {
-//		players[playerId] = name
-//		fights.forEach { it.participants.firstOrNull { it is Player && it.id == playerId }?.name = name }
-//	}
+	fun changeName(playerId: String, name: String) {
+		players[playerId] = name
+		fights.forEach { it.participants.firstOrNull { it is Player && it.id == playerId }?.name = name }
+	}
 
 	fun findFight(playerId: String) = fights.firstOrNull { it.participants.filter { it is Player && it.id == playerId }.isNotEmpty() }
 }
