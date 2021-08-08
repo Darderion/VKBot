@@ -1,22 +1,19 @@
 package com.gogo.steelbotrun.vkbot.inventory
 
+import com.gogo.steelbotrun.vkbot.inventory.items.Inventory
 import com.gogo.steelbotrun.vkbot.inventory.items.Item
 import kotlin.math.ceil
 import kotlin.math.floor
-import kotlin.time.seconds
 
-class Inventory(val size: Int, val items: MutableList<Pair<Item, Int>>) {
 
-	fun findItem(item: Item): MutableList<Int> {
+class StackInventory(val size: Int, override val items: MutableList<Pair<Item, Int>>): Inventory {
+
+	private fun findItem(item: Item): MutableList<Int> {
 		val indexes = mutableListOf<Int>()
 		items.forEachIndexed { index, pair -> if(pair.first.name == item.name) indexes.add(index) }
 		return indexes
 	}
 
-	fun printItems() {
-		items.forEach {println("name : ${it.first.name}, amount: ${it.second}")}
-	}
-	//fun findItem(item:String): MutableList<Int> {}
 	fun addItem(item: Item, amount: Int): InventoryMessage {
 		var amount = amount
 		var numberOfStacks = ceil(amount.toDouble() / item.maxStack.toDouble()).toInt()
@@ -45,7 +42,6 @@ class Inventory(val size: Int, val items: MutableList<Pair<Item, Int>>) {
 
 				if(this.items.size >= this.size) return InventoryMessage(false, "Inventory is full")
 				if(this.items.size + numberOfStacks > this.size) return InventoryMessage(false, "Inventory can't take that much")
-				if(this.items.size + numberOfStacks > this.size) return InventoryMessage(false, "Inventory can't take that much")
 
 				this.items[indexes.last()] = Pair(item, item.maxStack)
 
@@ -62,7 +58,7 @@ class Inventory(val size: Int, val items: MutableList<Pair<Item, Int>>) {
 
 	fun removeItem(item: Item, amount: Int): InventoryMessage {
 		var amount = amount
-		val numberofStacksToRemove = floor(amount.toDouble() / item.maxStack.toDouble()).toInt()
+		var numberofStacksToRemove = floor(amount.toDouble() / item.maxStack.toDouble()).toInt()
 		var indexes = this.findItem(item)
 		if(indexes.isEmpty()) return InventoryMessage(false, "Inventory does not contain that item")
 		val lastIndex = indexes.last()
@@ -80,8 +76,9 @@ class Inventory(val size: Int, val items: MutableList<Pair<Item, Int>>) {
 		if(amount % item.maxStack > lastItem.second) carryOver = true
 		if(carryOver) {
 			this.items.removeAt(lastIndex)
-			indexes.removeAt(indexes.size-1)
-			this.items[indexes[indexes.size-1]] = Pair(item, lastItemCount)
+			this.items[indexes[indexes.size-2]] = Pair(item, lastItemCount)
+			amount -= (lastItem.second + item.maxStack - lastItemCount)
+			numberofStacksToRemove = floor(amount.toDouble() / item.maxStack.toDouble()).toInt()
 		}
 		if(numberofStacksToRemove > 0) {
 			for(i in 0 until numberofStacksToRemove) {
@@ -90,15 +87,10 @@ class Inventory(val size: Int, val items: MutableList<Pair<Item, Int>>) {
 				indexes = findItem(item)
 				amount -= item.maxStack
 			}
-			if(indexes.isNotEmpty() && amount != 0) {
+			if(indexes.isNotEmpty() && amount > 0) {
 				if(amount == lastItem.second) this.items.removeAt(indexes.last()) else this.items[indexes.last()] = Pair(item, lastItem.second - amount)
 			}
 		}
 		return InventoryMessage(false, "Deleted successfully")
 	}
-
-//	fun addItems(items: MutableList<Pair<Item, Int>>): InventoryMessage {}
-
-//	fun removeItems(items: MutableList<Pair<Item, Int>>): InventoryMessage {}
-
 }
