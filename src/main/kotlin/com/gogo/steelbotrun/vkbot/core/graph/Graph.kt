@@ -38,9 +38,11 @@ open class Graph<T>: Identifiable() {
 	 */
 	fun find(id: Int) = nodes.first { it.id == id }.value
 
-	fun get(id: Int) = find(id)
+	open fun addEdge(fromNodeId: Int, toNodeId: Int) {
+		edges[fromNodeId]!!.add(GraphEdge(fromNodeId, toNodeId))
+	}
 
-	fun addEdge(fromNodeId: Int, toNodeId: Int, text: String = "") {
-		edges[fromNodeId]!!.add(GraphEdge(toNodeId, text))
+	protected fun addEdge(graphEdge: GraphEdge) {
+		edges[graphEdge.fromNodeId]!!.add(graphEdge)
 	}
 }
