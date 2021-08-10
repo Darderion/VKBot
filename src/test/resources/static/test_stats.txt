@@ -1,0 +1,10 @@
+
+# List of stats
+# Comments start with '#'
+# Empty lines are ignored
+# Each line contains a stat and it's alternative names
+# Stat name's case is ignored
+
+Strength
+Agility Dexterity
+Endurance

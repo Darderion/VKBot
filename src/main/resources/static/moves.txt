@@ -1,0 +1,23 @@
+
+# List of moves
+# Comments start with '#'
+# Empty lines are ignored
+# Move is described using following template:
+
+# MoveName:
+# ActionName1 AreaName1 ActionPower1 ActionStat1A ActionStatScaling1A ... ActionStat1J ActionStatScaling1J
+# ActionName2 AreaName2 ActionPower2 ...
+# ...
+# ActionNameK AreaNameK ActionPowerK ActionStatKA ActionStatScalingKA ... ActionStatKJ ActionStatScalingKH
+
+Kick:
+	attack  body 15 strength 2
+	dodge   head 20 agility 3
+	penalty legs 15 endurance 2.5
+"Kick from Karate movies"
+
+Side Kick:
+	attack  head 20 strength 1 agility 1.5
+	dodge   head 30 agility 1
+	penalty legs 30
+"Cool move from fighting on ps3"

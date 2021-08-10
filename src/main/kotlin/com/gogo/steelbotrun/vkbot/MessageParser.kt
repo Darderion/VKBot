@@ -71,17 +71,17 @@ class MessageParser() {
 													BasicMonster(
 														"Bandit",
 														listOf(
-															com.gogo.steelbotrun.vkbot.battle.actions.Area.Head,
-															com.gogo.steelbotrun.vkbot.battle.actions.Area.Body,
-															com.gogo.steelbotrun.vkbot.battle.actions.Area.Legs
+															com.gogo.steelbotrun.vkbot.game.battle.actions.Area.Head,
+															com.gogo.steelbotrun.vkbot.game.battle.actions.Area.Body,
+															com.gogo.steelbotrun.vkbot.game.battle.actions.Area.Legs
 														),
 														listOf(
 															Move(
 																"Bandit's attack",
 																listOf(
 																	SimpleAction(
-																		com.gogo.steelbotrun.vkbot.battle.actions.ActionType.Attack,
-																		com.gogo.steelbotrun.vkbot.battle.actions.Area.Body,
+																		com.gogo.steelbotrun.vkbot.game.battle.actions.ActionType.Attack,
+																		com.gogo.steelbotrun.vkbot.game.battle.actions.Area.Body,
 																		10
 																	)
 																)

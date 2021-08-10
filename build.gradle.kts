@@ -33,6 +33,7 @@ dependencies {
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("io.projectreactor:reactor-test")
 	testImplementation("io.kotest:kotest-runner-junit5:4.3.2")
+	testImplementation("io.mockk:mockk:1.12.0")
 }
 
 tasks.withType<KotlinCompile> {

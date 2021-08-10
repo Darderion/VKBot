@@ -1,6 +1,7 @@
 package com.gogo.steelbotrun.vkbot
 
-import com.gogo.steelbotrun.vkbot.gif.ImageGenerator
+import com.gogo.steelbotrun.vkbot.game.character.stats.Stats
+import com.gogo.steelbotrun.vkbot.utils.gif.ImageGenerator
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
@@ -19,6 +20,7 @@ fun main(args: Array<String>) {
 			), listOf(3), listOf(null)
 		)
 	} else {
+		Stats.setup("/src/main/resources/static/stats.txt")
 		runApplication<VkbotApplication>(*args)
 	}
 }
