@@ -30,7 +30,6 @@ dependencies {
 	implementation("org.apache.httpcomponents:httpclient:4.3.4")
 	implementation("org.apache.httpcomponents:httpmime:4.3.1")
 	implementation("com.google.code.gson:gson:2.8.6")
-
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("io.projectreactor:reactor-test")
 	testImplementation("io.kotest:kotest-runner-junit5:4.3.2")
@@ -40,7 +39,7 @@ dependencies {
 tasks.withType<KotlinCompile> {
 	kotlinOptions {
 		freeCompilerArgs = listOf("-Xjsr305=strict")
-		jvmTarget = "15"
+		jvmTarget = "11"
 	}
 }
 

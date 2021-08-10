@@ -8,8 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest
 class VkbotApplicationTests {
 
 	@Test
-	fun contextLoads() {
-	}
+	fun contextLoads() {}
 
 }
- */
+*/
