@@ -7,7 +7,6 @@ import kotlin.math.floor
 
 
 class StackInventory(val size: Int, override val items: MutableList<InventoryStack>): Inventory<InventoryStack> {
-
 	private fun findItem(item: Item): MutableList<Int> {
 		val indexes = mutableListOf<Int>()
 		items.forEachIndexed { index, stack -> if(stack.item.name == item.name) indexes.add(index) }
