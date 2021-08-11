@@ -1,3 +1,11 @@
 package com.gogo.steelbotrun.vkbot.inventory.items
 
-class Item(val id: Int, val name: String, val stats: HashMap<String, Int>, val Effects: MutableList<String>, val maxStack: Int =  1)
+import com.gogo.steelbotrun.vkbot.game.character.stats.Stats
+
+class Item(
+	val id: Int,
+	val name: String,
+	val stats: Stats,
+	val Effects: MutableList<String>,
+	override val max: Int = 1
+	): Stackable
