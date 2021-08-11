@@ -1,8 +1,7 @@
-package com.gogo.steelbotrun.vkbot.inventory
+package com.gogo.steelbotrun.vkbot.game.inventory
 
-import com.gogo.steelbotrun.vkbot.inventory.items.Inventory
-import com.gogo.steelbotrun.vkbot.inventory.items.InventoryStack
-import com.gogo.steelbotrun.vkbot.inventory.items.Item
+import com.gogo.steelbotrun.vkbot.game.inventory.item.Item
+import com.gogo.steelbotrun.vkbot.game.inventory.slot.InventoryStack
 import kotlin.math.ceil
 import kotlin.math.floor
 

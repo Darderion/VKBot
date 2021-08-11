@@ -1,7 +1,7 @@
-package com.gogo.steelbotrun.vkbot.inventory.items
+package com.gogo.steelbotrun.vkbot.game.inventory
 
-import com.gogo.steelbotrun.vkbot.inventory.InventoryResponse
-import com.gogo.steelbotrun.vkbot.inventory.InventorySlot
+import com.gogo.steelbotrun.vkbot.game.inventory.item.Item
+import com.gogo.steelbotrun.vkbot.game.inventory.slot.InventorySlot
 
 interface Inventory<T: InventorySlot> {
 	val items: Collection<T>

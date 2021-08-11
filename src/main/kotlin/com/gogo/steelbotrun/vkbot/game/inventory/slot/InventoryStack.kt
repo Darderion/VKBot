@@ -1,6 +1,6 @@
-package com.gogo.steelbotrun.vkbot.inventory.items
+package com.gogo.steelbotrun.vkbot.game.inventory.slot
 
-import com.gogo.steelbotrun.vkbot.inventory.InventorySlot
+import com.gogo.steelbotrun.vkbot.game.inventory.item.Item
 
 class InventoryStack(item: Item, private var count: Int = 1): InventorySlot(item) {
 	fun count() = count
