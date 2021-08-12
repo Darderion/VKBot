@@ -22,6 +22,7 @@ class Server (
 	private fun log(text: String) {
 		log.add(text)
 	}
+
 	fun log() {
 		log.forEach { println(it) }
 	}
@@ -30,7 +31,7 @@ class Server (
 		val response = event.response()
 		if (response != null) return response
 
-		return when(event) {
+		return when (event) {
 			is EventMessage -> process(Message(event))
 			else -> "Unknown event type: ${event.type}"
 		}
@@ -38,7 +39,7 @@ class Server (
 
 	private fun process(message: Message): String {
 		message.commands.forEach {
-			when(it.type) {
+			when (it.type) {
 				CommandType.Duel -> {
 					log("Player ${message.info.fromId} sent duel request")
 					requests.add(RequestFactory.createRequest(message))
@@ -46,7 +47,6 @@ class Server (
 				}
 			}
 		}
-
 		return "OK"
 	}
 
@@ -57,7 +57,6 @@ class Server (
 
 		players[playerId] = name
 		fights.forEach { it.participants.firstOrNull { it is Player && it.id == playerId }?.name = name }
-
 		return true
 	}
 
