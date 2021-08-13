@@ -1,4 +1,4 @@
-package com.gogo.steelbotrun.vkbot.core.dialogue
+package com.gogo.steelbotrun.vkbot.game.graph.dialogue
 
 import com.gogo.steelbotrun.vkbot.core.graph.GraphNode
 

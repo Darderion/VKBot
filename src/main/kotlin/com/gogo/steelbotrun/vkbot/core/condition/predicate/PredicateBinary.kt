@@ -10,7 +10,7 @@ abstract class PredicateBinary(vararg conditions: Condition): Condition() {
 		val count = conditions.count()
 		val (predicate1, predicate2) = when(count) {
 			0 -> Pair(PredicateTrue(), PredicateTrue())
-			1 -> Pair(conditions.first(), PredicateFalse())
+			1 -> Pair(conditions.first(), conditions.first())
 			2 -> Pair(conditions[0], conditions[1])
 			else -> {
 				getPredicateTree(count, *conditions)
