@@ -1,4 +1,4 @@
-package com.gogo.steelbotrun.vkbot
+package com.gogo.steelbotrun.vkbot.utils.random
 
 import kotlin.random.Random
 

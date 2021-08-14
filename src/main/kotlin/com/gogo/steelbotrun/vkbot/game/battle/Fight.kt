@@ -1,6 +1,6 @@
 package com.gogo.steelbotrun.vkbot.game.battle
 
-import com.gogo.steelbotrun.vkbot.Random
+import com.gogo.steelbotrun.vkbot.utils.random.Random
 import com.gogo.steelbotrun.vkbot.game.battle.actions.ActionType.*
 import com.gogo.steelbotrun.vkbot.game.battle.fighters.Fighter
 import com.gogo.steelbotrun.vkbot.bot.event.MessageResponse
