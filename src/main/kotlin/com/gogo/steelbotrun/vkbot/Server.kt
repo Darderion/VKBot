@@ -9,6 +9,7 @@ import com.gogo.steelbotrun.vkbot.bot.event.EventMessage
 import com.gogo.steelbotrun.vkbot.bot.request.Request
 import com.gogo.steelbotrun.vkbot.bot.request.RequestFactory
 import com.gogo.steelbotrun.vkbot.bot.sdk.SDK
+import com.gogo.steelbotrun.vkbot.utils.logger.Logger
 import org.springframework.stereotype.Component
 
 @Component
@@ -16,17 +17,9 @@ class Server (
 	val fights: MutableList<Fight> = mutableListOf(),
 	val requests: MutableList<Request> = mutableListOf(),
 	val players: HashMap<String, String> = hashMapOf(),
-	private val sdk: SDK = SDK()
+	private val sdk: SDK = SDK(),
+	val log: Logger = Logger()
 ) {
-	private val log = mutableListOf("Server log")
-	private fun log(text: String) {
-		log.add(text)
-	}
-
-	fun log() {
-		log.forEach { println(it) }
-	}
-
 	fun process(event: Event): String {
 		val response = event.response()
 		if (response != null) return response
@@ -41,7 +34,7 @@ class Server (
 		message.commands.forEach {
 			when (it.type) {
 				CommandType.Duel -> {
-					log("Player ${message.info.fromId} sent duel request")
+					log write "Player ${message.info.fromId} sent duel request"
 					requests.add(RequestFactory.createRequest(message))
 					sdk.send("Ваш запрос успешно создан", message.info.fromId)
 				}
