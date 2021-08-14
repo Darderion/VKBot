@@ -7,4 +7,10 @@ import com.gogo.steelbotrun.vkbot.core.graph.GraphNode
 open class Position<T, V: GraphNode<T>, E: GraphEdge>(open val graph: Graph<T, V, E>, open var current: V) {
 	open val paths: List<V>
 	get() = graph.edges[current.id]!!.map { edge -> graph.nodes.first { it.id == edge.toNodeId } }
+
+	fun move(node: V) {
+		if (paths.contains(node))
+			current = node
+	}
 }
+
