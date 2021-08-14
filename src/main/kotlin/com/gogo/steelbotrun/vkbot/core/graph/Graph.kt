@@ -2,20 +2,20 @@ package com.gogo.steelbotrun.vkbot.core.graph
 
 import java.lang.Error
 
-open class Graph<T>: Identifiable() {
-	val nodes: HashSet<GraphNode<T>> = hashSetOf()
-	val edges: HashMap<Int, HashSet<GraphEdge>> = hashMapOf()
+abstract class Graph<T, V: GraphNode<T>, E: GraphEdge>: Identifiable() {
+	val nodes: HashSet<V> = hashSetOf()
+	val edges: HashMap<Int, HashSet<E>> = hashMapOf()
 
 	/**
 	 * Adds a node with value VALUE
 	 * @param value Value of a node
 	 */
 	open fun addNode(value: T) {
-		val graphNode = GraphNode(value)
+		val graphNode = getNewNode(value)
 		addNode(graphNode)
 	}
 
-	protected fun addNode(node: GraphNode<T>) {
+	fun addNode(node: V) {
 		nodes.add(node)
 		edges[node.id] = HashSet()
 	}
@@ -38,9 +38,14 @@ open class Graph<T>: Identifiable() {
 	 */
 	fun find(id: Int) = nodes.first { it.id == id }.value
 
-	fun get(id: Int) = find(id)
-
-	fun addEdge(fromNodeId: Int, toNodeId: Int, text: String = "") {
-		edges[fromNodeId]!!.add(GraphEdge(toNodeId, text))
+	open fun addEdge(fromNodeId: Int, toNodeId: Int) {
+		edges[fromNodeId]!!.add(getNewEdge(fromNodeId, toNodeId))
 	}
+
+	protected fun addEdge(graphEdge: E) {
+		edges[graphEdge.fromNodeId]!!.add(graphEdge)
+	}
+
+	abstract fun getNewNode(value: T): V
+	abstract fun getNewEdge(fromNodeId: Int, toNodeId: Int): E
 }

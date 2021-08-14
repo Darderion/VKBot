@@ -5,6 +5,8 @@ package com.gogo.steelbotrun.vkbot.core.graph
 open class Identifiable {
 	val id: Int = getId
 
+	override fun equals(other: Any?) = if (other != null && other is Identifiable) id == other.id else false
+
 	companion object {
 		private var getId: Int = 0
 		get() = field++
