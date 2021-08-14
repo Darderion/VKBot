@@ -8,7 +8,7 @@ import io.kotest.matchers.comparables.shouldBeEqualComparingTo
 
 class ConditionsTests: StringSpec({
 	"ConditionStat should compare stats" {
-		val condition = ConditionStat("Strength", ComparisonType.greater, 3.0)
+		val condition = ConditionStat("Strength", ComparisonType.Greater, 3.0)
 
 		condition.resolve(Stats("Strength" to 2.0)) shouldBeEqualComparingTo false
 		condition.resolve(Stats("Strength" to 3.0)) shouldBeEqualComparingTo false

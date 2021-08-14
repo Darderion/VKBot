@@ -3,7 +3,7 @@ package com.gogo.steelbotrun.vkbot.core.condition
 import kotlin.math.abs
 
 enum class ComparisonType {
-	equal, greater, less, greaterOrEqual, lessOrEqual
+	Equal, Greater, Less, GreaterOrEqual, LessOrEqual
 }
 
 // IBM double.equals(otherDouble: Double): Boolean
