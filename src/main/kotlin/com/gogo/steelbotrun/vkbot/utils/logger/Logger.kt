@@ -14,4 +14,12 @@ class Logger {
 	infix fun exception(text: String) {
 		logs.add(LoggerEvent(text, LoggerEventTypes.Exception))
 	}
+
+	fun print() {
+		logs.forEach(::println)
+	}
+
+	fun print(numberOfLines: Int) {
+		logs.takeLast(numberOfLines).forEach(::println)
+	}
 }
