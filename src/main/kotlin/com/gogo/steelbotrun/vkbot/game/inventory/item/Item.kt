@@ -7,5 +7,5 @@ class Item(
 	val name: String,
 	val stats: Stats,
 	val Effects: MutableList<String>,
-	override val max: Int = 1
-	): Stackable
+	val max: Int = 1
+	)
