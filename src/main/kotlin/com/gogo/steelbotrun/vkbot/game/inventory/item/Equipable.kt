@@ -6,6 +6,5 @@ import com.gogo.steelbotrun.vkbot.game.character.bodyparts.BodyParts
 interface Equipable {
 	val slots: BodyParts<Boolean>
 
-	fun canEquip(characterSlots: BodyParts<Boolean>, requirements: Condition) =
-		characterSlots doesNotIntersectWith slots && requirements.resolve()
+	fun canEquip(characterSlots: BodyParts<Boolean>, vararg args: Any): Boolean
 }

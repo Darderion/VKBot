@@ -8,5 +8,5 @@ class PredicateAnd(vararg conditions: Condition): PredicateBinary(*conditions) {
 		PredicateAnd(*conditions.copyOfRange((conditions.count() + 1) / 2, conditions.count()))
 	)
 
-	override fun resolve(vararg args: Any) = condition1.resolve(args) && condition2.resolve(args)
+	override fun resolve(args: Map<Class<Any>, Any>) = condition1.interpret(args) && condition2.interpret(args)
 }

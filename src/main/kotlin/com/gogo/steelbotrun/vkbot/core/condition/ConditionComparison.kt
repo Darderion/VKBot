@@ -9,7 +9,7 @@ import com.gogo.steelbotrun.vkbot.game.character.stats.Stats
 abstract class ConditionComparison(val comparisonType: ComparisonType, val value: Double) : Condition() {
 	protected var comparedValue: Double? = null
 
-	override fun resolve(vararg args: Any) = if (comparedValue != null) when (comparisonType) {
+	override fun resolve(args: Map<Class<Any>, Any>) = if (comparedValue != null) when (comparisonType) {
 		Equal          -> comparedValue!!.equalsDelta(value)
 		Greater        -> comparedValue!! > value
 		Less           -> comparedValue!! < value

@@ -5,9 +5,9 @@ import com.gogo.steelbotrun.vkbot.core.condition.ConditionComparison
 import com.gogo.steelbotrun.vkbot.game.character.stats.Stats
 
 class ConditionStat(val stat: String, comparisonType: ComparisonType, value: Double): ConditionComparison(comparisonType, value) {
-	override fun resolve(vararg args: Any): Boolean {
-		comparedValue = (args.first { it is Stats } as Stats)[stat]
+	override fun resolve(args: Map<Class<Any>, Any>): Boolean {
+		comparedValue = (args[Stats().javaClass] as Stats)[stat]
 
-		return super.resolve(*args)
+		return super.resolve(args)
 	}
 }
