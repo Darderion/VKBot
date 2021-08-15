@@ -9,6 +9,6 @@ class DialoguePosition(override val graph: Dialogue, override var current: Dialo
 
 	override val paths: List<DialogueNode>
 		get() = graph.edges[current.id]!!
-			.filter { it.condition.resolve() }
+			.filter { it.condition.interpret() }
 			.map { edge -> graph.nodes.first { it.id == edge.toNodeId } }
 }

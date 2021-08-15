@@ -1,8 +1,7 @@
-package com.gogo.steelbotrun.vkbot
+package com.gogo.steelbotrun.vkbot.game.inventory
 
 import com.gogo.steelbotrun.vkbot.game.account.Account
 import com.gogo.steelbotrun.vkbot.game.character.stats.Stats
-import com.gogo.steelbotrun.vkbot.game.inventory.StackInventory
 import com.gogo.steelbotrun.vkbot.game.inventory.item.Item
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.ints.shouldBeExactly

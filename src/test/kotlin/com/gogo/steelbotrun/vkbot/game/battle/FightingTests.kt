@@ -1,4 +1,4 @@
-package com.gogo.steelbotrun.vkbot
+package com.gogo.steelbotrun.vkbot.game.battle
 
 import com.gogo.steelbotrun.vkbot.game.battle.actions.ActionType
 import com.gogo.steelbotrun.vkbot.game.battle.actions.Area

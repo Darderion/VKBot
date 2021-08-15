@@ -1,4 +1,4 @@
-package com.gogo.steelbotrun.vkbot
+package com.gogo.steelbotrun.vkbot.core.graph
 
 import com.gogo.steelbotrun.vkbot.core.condition.predicate.PredicateFalse
 import com.gogo.steelbotrun.vkbot.core.condition.predicate.PredicateTrue

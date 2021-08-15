@@ -6,14 +6,14 @@ import com.gogo.steelbotrun.vkbot.core.condition.Condition
 import com.gogo.steelbotrun.vkbot.core.condition.equalsDelta
 import com.gogo.steelbotrun.vkbot.game.character.stats.Stats
 
-abstract class ConditionComparison(val comparisonType: ComparisonType, val value: Double): Condition() {
-	abstract fun comparedValue(): Double
+abstract class ConditionComparison(val comparisonType: ComparisonType, val value: Double) : Condition() {
+	protected var comparedValue: Double? = null
 
-	override fun resolve() = when(comparisonType) {
-		equal -> comparedValue().equalsDelta(value)
-		greater -> comparedValue() > value
-		less -> comparedValue() < value
-		greaterOrEqual -> comparedValue() > value || comparedValue().equalsDelta(value)
-		lessOrEqual -> comparedValue() < value || comparedValue().equalsDelta(value)
-	}
+	override fun resolve(args: Map<Class<Any>, Any>) = if (comparedValue != null) when (comparisonType) {
+		Equal          -> comparedValue!!.equalsDelta(value)
+		Greater        -> comparedValue!! > value
+		Less           -> comparedValue!! < value
+		GreaterOrEqual -> comparedValue!! > value || comparedValue!!.equalsDelta(value)
+		LessOrEqual    -> comparedValue!! < value || comparedValue!!.equalsDelta(value)
+	} else throw Error("No value to compare with")
 }

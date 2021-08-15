@@ -1,4 +1,4 @@
-package com.gogo.steelbotrun.vkbot
+package com.gogo.steelbotrun.vkbot.game.character.stats
 
 import com.gogo.steelbotrun.vkbot.game.character.stats.Stats
 import io.kotest.core.spec.style.StringSpec
