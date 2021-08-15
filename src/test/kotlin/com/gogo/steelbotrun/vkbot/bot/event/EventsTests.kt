@@ -1,6 +1,6 @@
-package com.gogo.steelbotrun.vkbot
+package com.gogo.steelbotrun.vkbot.bot.event
 
-import com.gogo.steelbotrun.vkbot.bot.event.EventFactory
+import com.gogo.steelbotrun.vkbot.Server
 import com.gogo.steelbotrun.vkbot.bot.sdk.SDK
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.comparables.shouldBeEqualComparingTo

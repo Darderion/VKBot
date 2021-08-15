@@ -1,4 +1,4 @@
-package com.gogo.steelbotrun.vkbot
+package com.gogo.steelbotrun.vkbot.core.graph
 
 import com.gogo.steelbotrun.vkbot.core.graph.Identifiable
 import io.kotest.core.spec.style.StringSpec

@@ -1,6 +1,5 @@
-package com.gogo.steelbotrun.vkbot
+package com.gogo.steelbotrun.vkbot.core.condition
 
-import com.gogo.steelbotrun.vkbot.core.condition.ComparisonType
 import com.gogo.steelbotrun.vkbot.game.character.stats.Stats
 import com.gogo.steelbotrun.vkbot.game.condition.ConditionStat
 import io.kotest.assertions.throwables.shouldThrowAny

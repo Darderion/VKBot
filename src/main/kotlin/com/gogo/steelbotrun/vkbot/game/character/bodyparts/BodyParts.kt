@@ -80,6 +80,6 @@ class BodyParts<T>(parts: List<T?>) {
 	fun size() = this.parts.filterNotNull().count()
 
 	companion object {
-		val numberOfParts = 16
+		const val numberOfParts = 16
 	}
 }

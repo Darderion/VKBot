@@ -1,8 +1,6 @@
-package com.gogo.steelbotrun.vkbot
+package com.gogo.steelbotrun.vkbot.core.command
 
-import com.gogo.steelbotrun.vkbot.core.command.Lexer
 import com.gogo.steelbotrun.vkbot.core.command.Lexer.Companion.replaceNewLineTokens
-import com.gogo.steelbotrun.vkbot.core.command.Message
 import com.gogo.steelbotrun.vkbot.bot.event.MessageInfo
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.comparables.shouldBeEqualComparingTo
