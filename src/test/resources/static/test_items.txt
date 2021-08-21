@@ -14,6 +14,7 @@
 # "Description"
 
 Sword from Tina's DLC:
+Equipment
 	Strength 1, Agility 2
 	Requires Strength > 3
 	Requires Strength < 5
@@ -21,6 +22,12 @@ Sword from Tina's DLC:
 "Cool sword"
 
 Bow from Tina's DLC:
+Equipment
 	Agility 4
 	Requires Agility >= 3
 "Cool bow"
+
+Potion from Tina's DLC:
+Consumable
+	Agility 5
+"Potion of Dexterity"

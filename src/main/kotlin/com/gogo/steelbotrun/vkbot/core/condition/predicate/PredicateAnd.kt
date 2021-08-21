@@ -11,4 +11,6 @@ class PredicateAnd(vararg conditions: Condition): PredicateBinary(*conditions) {
 	)
 
 	override fun resolve(args: Map<Class<Any>, Any>) = condition1.interpret(args) && condition2.interpret(args)
+
+	override fun toString() = "$condition1 and $condition2"
 }

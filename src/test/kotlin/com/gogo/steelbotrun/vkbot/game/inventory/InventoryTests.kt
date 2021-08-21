@@ -3,12 +3,13 @@ package com.gogo.steelbotrun.vkbot.game.inventory
 import com.gogo.steelbotrun.vkbot.game.account.Account
 import com.gogo.steelbotrun.vkbot.game.character.stats.Stats
 import com.gogo.steelbotrun.vkbot.game.inventory.item.Item
+import com.gogo.steelbotrun.vkbot.game.inventory.item.ItemType
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.ints.shouldBeExactly
 
 class InventoryTests: StringSpec ({
 	"Inventory should add correct number of items" {
-		val testItem =  Item(1, "test Item", Stats(), 20)
+		val testItem =  Item(1, "test Item", Stats(), ItemType.Equipment, 20)
 		val testAccount = Account(StackInventory(5, mutableListOf()))
 		testAccount.inventory.addItem(testItem, 20)
 		testAccount.inventory.items.size shouldBeExactly 1
@@ -22,7 +23,7 @@ class InventoryTests: StringSpec ({
 			.map { it.count() }.reduce {acc,it -> acc + it} shouldBeExactly 42
 	}
 	"Inventory shouldn't add items if number of items is bigger than inventory's size" {
-		val testItem =  Item(1, "test Item", Stats(), 20)
+		val testItem =  Item(1, "test Item", Stats(), ItemType.Equipment, 20)
 		val testAccount = Account(StackInventory(5, mutableListOf()))
 		testAccount.inventory.addItem(testItem, 99999999)
 		testAccount.inventory.items.size shouldBeExactly 0
@@ -32,8 +33,8 @@ class InventoryTests: StringSpec ({
 		testAccount.inventory.items.size shouldBeExactly 5
 	}
 	"Inventory should remove items" {
-		val testItem =  Item(1, "testItem", Stats(), 20)
-		val testItem2 =  Item(2, "testItem2", Stats(), 1)
+		val testItem =  Item(1, "testItem", Stats(), ItemType.Equipment, 20)
+		val testItem2 =  Item(2, "testItem2", Stats(), ItemType.Equipment, 1)
 		val testAccount = Account(StackInventory(5, mutableListOf()))
 		testAccount.inventory.addItem(testItem, 50)
 		testAccount.inventory.removeItem(testItem,25)

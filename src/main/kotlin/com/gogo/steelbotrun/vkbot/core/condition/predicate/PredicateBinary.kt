@@ -2,6 +2,8 @@ package com.gogo.steelbotrun.vkbot.core.condition.predicate
 
 import com.gogo.steelbotrun.vkbot.core.condition.Condition
 
+fun Boolean.toPredicate() = if (this) PredicateTrue() else PredicateFalse()
+
 abstract class PredicateBinary(vararg conditions: Condition) : Condition() {
 	protected val condition1: Condition
 	protected val condition2: Condition
