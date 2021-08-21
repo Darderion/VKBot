@@ -22,14 +22,16 @@ class ItemRepository(filePath: String = "/src/test/resources/static/test_items.t
 		var itemName: String? = null
 		var description = ""
 		var itemType: ItemType? = null
-		var requirements: MutableList<Condition> = mutableListOf()
+		val requirements: MutableList<Condition> = mutableListOf()
 		val itemStats = mutableListOf<Pair<String, Double>>()
 
 		itemsText.forEach {
 			if (it.contains(":")) {
 				if (itemName != null) {
 					// Add item
-					val item = Item(1, itemName!!, Stats(*itemStats.toTypedArray()), itemType?: Quest, requirements = PredicateAnd(*requirements.toTypedArray()))
+					val item = Item(1, itemName!!, Stats(*itemStats.toTypedArray()),
+						itemType?: Quest, requirements = PredicateAnd(*requirements.toTypedArray()),
+						description = description)
 					items.add(item)
 					// Clear item's fields
 					itemName = null

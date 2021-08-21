@@ -18,6 +18,9 @@ class ItemsTests: StringSpec({
 		item1.name shouldBe "Sword from Tina's DLC"
 		item2.name shouldBe "Bow from Tina's DLC"
 
+		item1.description shouldBe "Cool sword"
+		item2.description shouldBe "Cool bow"
+
 		(item1.stats == Stats("Strength" to 1.0, "Agility" to 2.0)) shouldBe true
 		(item2.stats == Stats("Agility" to 4.0)) shouldBe true
 

@@ -15,7 +15,8 @@ class Item(
 	val type: ItemType,
 	val max: Int = 1,
 	val requirements: Condition = PredicateTrue(),
-	val bodyParts: BodyParts<Boolean> = BodyParts()
+	val bodyParts: BodyParts<Boolean> = BodyParts(),
+	val description: String = ""
 	) {
 	fun canUse(vararg args: Any) = (when(type) {
 			Equipment -> {
