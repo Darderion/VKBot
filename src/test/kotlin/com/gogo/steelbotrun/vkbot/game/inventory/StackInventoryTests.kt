@@ -7,7 +7,7 @@ import com.gogo.steelbotrun.vkbot.game.inventory.item.ItemType
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.ints.shouldBeExactly
 
-class InventoryTests : StringSpec({
+class StackInventoryTests : StringSpec({
 	"StackInventory should add correct number of items" {
 		val testItem = Item(1, "test Item", Stats(), ItemType.Equipment, 20)
 		val testAccount = Account(StackInventory(5, mutableListOf()))
@@ -24,7 +24,7 @@ class InventoryTests : StringSpec({
 		inventory.slots.filter { it.item.name == "test Item" }
 			.map { it.count() }.reduce { acc, it -> acc + it } shouldBeExactly 42
 	}
-	"Inventory shouldn't add items if number of items is bigger than inventory's size" {
+	"StackInventory shouldn't add items if number of items is bigger than inventory's size" {
 		val testItem = Item(1, "test Item", Stats(), ItemType.Equipment, 20)
 		val testAccount = Account(StackInventory(5, mutableListOf()))
 

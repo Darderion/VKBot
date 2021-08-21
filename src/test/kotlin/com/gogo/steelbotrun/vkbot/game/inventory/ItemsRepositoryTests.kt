@@ -7,7 +7,7 @@ import com.gogo.steelbotrun.vkbot.game.inventory.item.ItemType
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
 
-class ItemsTests: StringSpec({
+class ItemsRepositoryTests: StringSpec({
 	"ItemRepository should return items" {
 		val itemRepository = ItemRepository()
 		itemRepository.items().count() shouldBe 3
@@ -31,5 +31,4 @@ class ItemsTests: StringSpec({
 		item1.canUse(BodyParts<Boolean>(), Stats("Strength" to 4.0)) shouldBe false
 		item1.canUse(BodyParts<Boolean>(), Stats("Strength" to 4.0, "Agility" to 4.0)) shouldBe true
 	}
-}) {
-}
+})
