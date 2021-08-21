@@ -61,7 +61,7 @@ class BodyParts<T>(parts: List<T?>) {
 		finger9 =   parts[15]
 	}
 
-	private val parts: List<T?>
+	val parts: List<T?>
 		get() = listOf(head, body, legs, leftFoot, rightFoot, leftHand, rightHand,
 			finger1, finger2, finger3, finger4, finger5, finger6, finger7, finger8, finger9)
 

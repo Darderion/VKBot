@@ -10,4 +10,6 @@ class ConditionStat(val stat: String, comparisonType: ComparisonType, value: Dou
 
 		return super.resolve(args)
 	}
+
+	override fun toString() = "$stat $comparisonType $value"
 }

@@ -9,6 +9,7 @@
 # ActionName2 AreaName2 ActionPower2 ...
 # ...
 # ActionNameK AreaNameK ActionPowerK ActionStatKA ActionStatScalingKA ... ActionStatKJ ActionStatScalingKH
+# "Description"
 
 Kick:
 	attack  body 15 strength 2
@@ -20,4 +21,4 @@ Side Kick:
 	attack  head 20 strength 1 agility 1.5
 	dodge   head 30 agility 1
 	penalty legs 30
-"Cool move from fighting on ps3"
+"Cool move from fighting game on ps3"

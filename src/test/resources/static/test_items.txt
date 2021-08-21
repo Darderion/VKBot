@@ -1,0 +1,33 @@
+
+# List of items
+# Comments start with '#'
+# Empty lines are ignored
+# Items are described using following template:
+
+# ItemName:
+# ItemType
+# Stat1 StatValue1, Stat2 StatValue2, ... , StatK StatValueK
+# Requires Requirement1
+# Requires Requirement2
+# ...
+# Requires RequirementJ
+# "Description"
+
+Sword from Tina's DLC:
+Equipment
+	Strength 1, Agility 2
+	Requires Strength > 3
+	Requires Strength < 5
+	Requires Agility = 4
+"Cool sword"
+
+Bow from Tina's DLC:
+Equipment
+	Agility 4
+	Requires Agility >= 3
+"Cool bow"
+
+Potion from Tina's DLC:
+Consumable
+	Agility 5
+"Potion of Dexterity"

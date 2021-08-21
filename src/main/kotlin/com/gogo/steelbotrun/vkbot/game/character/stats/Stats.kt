@@ -10,6 +10,9 @@ class Stats {
 		if (values.count() != length) throw Error("Incorrect number of stats")
 	}
 
+	override fun equals(other: Any?) =
+		(other is Stats) && !values.mapIndexed { index, d -> other.values[index] == d }.any { !it }
+
 	constructor(vararg pairs: Pair<String, Double>) {
 		values = MutableList(length) { 0.0 }
 		pairs.forEach { values[names[it.first.toLowerCase()]!!] = it.second }
@@ -27,6 +30,12 @@ class Stats {
 	operator fun times(a: Stats) = Stats(
 		values.mapIndexed { index, d -> d * a.values[index] }
 	)
+
+	override fun hashCode(): Int {
+		return values.hashCode()
+	}
+
+	override fun toString() = "Stats { ${values.joinToString(", ")} }"
 
 	val sum: Double
 		get() = values.reduce { acc, d -> acc + d }

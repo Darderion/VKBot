@@ -1,7 +1,5 @@
 package com.gogo.steelbotrun.vkbot.core.condition
 
-import kotlin.reflect.jvm.internal.impl.load.java.structure.JavaClass
-
 abstract class Condition {
 
 	/**

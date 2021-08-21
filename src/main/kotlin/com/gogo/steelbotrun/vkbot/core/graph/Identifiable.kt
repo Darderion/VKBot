@@ -6,6 +6,7 @@ open class Identifiable {
 	val id: Int = getId
 
 	override fun equals(other: Any?) = if (other != null && other is Identifiable) id == other.id else false
+	override fun hashCode() = id
 
 	companion object {
 		private var getId: Int = 0
