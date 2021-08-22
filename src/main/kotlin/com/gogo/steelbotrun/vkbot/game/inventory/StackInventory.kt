@@ -1,6 +1,7 @@
 package com.gogo.steelbotrun.vkbot.game.inventory
 
 import com.gogo.steelbotrun.vkbot.game.inventory.item.Item
+import com.gogo.steelbotrun.vkbot.game.inventory.response.InventoryResponse
 import com.gogo.steelbotrun.vkbot.game.inventory.slot.InventoryStack
 import kotlin.math.ceil
 import kotlin.math.floor
@@ -78,7 +79,7 @@ class StackInventory(val size: Int, override val slots: MutableList<InventorySta
 		if (amount <= lastItem.count()) {
 			if (amount == lastItem.count()) this.slots.removeAt(lastIndex) else this.slots[lastIndex] =
 				InventoryStack(item, lastItem.count() - amount)
-			return InventoryResponse(false, "Deleted successfully")
+			return InventoryResponse(true, "Deleted successfully")
 		}
 		val lastItemCount = remainder % item.max
 		if (amount % item.max > lastItem.count()) carryOver = true

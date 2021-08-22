@@ -1,6 +1,6 @@
 package com.gogo.steelbotrun.vkbot.game.inventory
 
-import com.gogo.steelbotrun.vkbot.game.inventory.item.Item
+import com.gogo.steelbotrun.vkbot.game.inventory.response.InventoryResponse
 import com.gogo.steelbotrun.vkbot.game.inventory.slot.InventorySlot
 
 abstract class GenericInventory<T: InventorySlot>: Inventory {
