@@ -5,7 +5,6 @@ import com.gogo.steelbotrun.vkbot.game.inventory.slot.InventoryStack
 import kotlin.math.ceil
 import kotlin.math.floor
 
-
 class StackInventory(val size: Int, override val slots: MutableList<InventoryStack>) :
 	GenericInventory<InventoryStack>() {
 	private fun findItem(item: Item): MutableList<Int> {
@@ -101,7 +100,7 @@ class StackInventory(val size: Int, override val slots: MutableList<InventorySta
 					InventoryStack(item, lastItem.count() - amount)
 			}
 		}
-		return InventoryResponse(false, "Deleted successfully")
+		return InventoryResponse(true, "Deleted successfully")
 	}
 
 	override fun addItem(inventorySlot: InventoryStack) = addItem(inventorySlot.item, inventorySlot.count())

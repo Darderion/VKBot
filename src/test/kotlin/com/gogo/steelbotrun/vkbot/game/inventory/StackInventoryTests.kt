@@ -6,6 +6,7 @@ import com.gogo.steelbotrun.vkbot.game.inventory.item.Item
 import com.gogo.steelbotrun.vkbot.game.inventory.item.ItemType
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.ints.shouldBeExactly
+import io.kotest.matchers.shouldBe
 
 class StackInventoryTests : StringSpec({
 	"StackInventory should add correct number of items" {
@@ -29,11 +30,11 @@ class StackInventoryTests : StringSpec({
 		val testAccount = Account(StackInventory(5, mutableListOf()))
 
 		val inventory = testAccount.inventory as StackInventory
-		inventory.addItem(testItem, 99999999)
+		inventory.addItem(testItem, 99999999).operationSuccess shouldBe false
 		inventory.slots.size shouldBeExactly 0
-		inventory.addItem(testItem, 100)
+		inventory.addItem(testItem, 100).operationSuccess shouldBe true
 		inventory.slots.size shouldBeExactly 5
-		inventory.addItem(testItem, 1)
+		inventory.addItem(testItem, 1).operationSuccess shouldBe false
 		inventory.slots.size shouldBeExactly 5
 	}
 	"StackInventory should remove items" {
