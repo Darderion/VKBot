@@ -2,9 +2,9 @@ package com.gogo.steelbotrun.vkbot.core.graph
 
 import com.gogo.steelbotrun.vkbot.core.condition.predicate.PredicateFalse
 import com.gogo.steelbotrun.vkbot.core.condition.predicate.PredicateTrue
-import com.gogo.steelbotrun.vkbot.game.graph.dialogue.Dialogue
-import com.gogo.steelbotrun.vkbot.game.graph.dialogue.DialogueNode
-import com.gogo.steelbotrun.vkbot.game.graph.dialogue.DialoguePosition
+import com.gogo.steelbotrun.vkbot.game.map.dialogue.Dialogue
+import com.gogo.steelbotrun.vkbot.game.map.dialogue.DialogueNode
+import com.gogo.steelbotrun.vkbot.game.map.dialogue.DialoguePosition
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.ints.shouldBeExactly
 

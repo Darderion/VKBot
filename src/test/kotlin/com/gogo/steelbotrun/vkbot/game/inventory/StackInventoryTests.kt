@@ -11,7 +11,7 @@ import io.kotest.matchers.shouldBe
 class StackInventoryTests : StringSpec({
 	"StackInventory should add correct number of items" {
 		val testItem = Item(1, "test Item", Stats(), ItemType.Equipment, 20)
-		val testAccount = Account(StackInventory(5, mutableListOf()))
+		val testAccount = Account("account_id", "account_name", StackInventory(5, mutableListOf()))
 
 		val inventory = testAccount.inventory as StackInventory
 		inventory.addItem(testItem, 20)
@@ -27,7 +27,7 @@ class StackInventoryTests : StringSpec({
 	}
 	"StackInventory shouldn't add items if number of items is bigger than inventory's size" {
 		val testItem = Item(1, "test Item", Stats(), ItemType.Equipment, 20)
-		val testAccount = Account(StackInventory(5, mutableListOf()))
+		val testAccount = Account("account_id", "account_name", StackInventory(5, mutableListOf()))
 
 		val inventory = testAccount.inventory as StackInventory
 		inventory.addItem(testItem, 99999999).operationSuccess shouldBe false
@@ -40,7 +40,7 @@ class StackInventoryTests : StringSpec({
 	"StackInventory should remove items" {
 		val testItem = Item(1, "testItem", Stats(), ItemType.Equipment, 20)
 		val testItem2 = Item(2, "testItem2", Stats(), ItemType.Equipment, 1)
-		val testAccount = Account(StackInventory(5, mutableListOf()))
+		val testAccount = Account("account_id", "account_name", StackInventory(5, mutableListOf()))
 
 		val inventory = testAccount.inventory as StackInventory
 		inventory.addItem(testItem, 50)

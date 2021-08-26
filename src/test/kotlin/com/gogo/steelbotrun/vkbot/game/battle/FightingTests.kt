@@ -10,7 +10,7 @@ import io.kotest.matchers.doubles.shouldBeExactly
 
 class FightingTests : StringSpec({
 	"Moves Repository should contain moves from file" {
-		val moves = MovesRepository("/src/test/resources/static/test_moves.txt").moves()
+		val moves = MovesRepository("/src/test/resources/static/test_moves.txt").get()
 
 		moves.first().name shouldBeEqualComparingTo "Kick"
 		moves[1].name shouldBeEqualComparingTo "Side Kick"

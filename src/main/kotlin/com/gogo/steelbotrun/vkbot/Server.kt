@@ -9,6 +9,7 @@ import com.gogo.steelbotrun.vkbot.bot.event.EventMessage
 import com.gogo.steelbotrun.vkbot.bot.request.Request
 import com.gogo.steelbotrun.vkbot.bot.request.RequestFactory
 import com.gogo.steelbotrun.vkbot.bot.sdk.SDK
+import com.gogo.steelbotrun.vkbot.game.account.AccountsRepository
 import com.gogo.steelbotrun.vkbot.utils.logger.Logger
 import org.springframework.stereotype.Component
 
@@ -16,7 +17,7 @@ import org.springframework.stereotype.Component
 class Server (
 	val fights: MutableList<Fight> = mutableListOf(),
 	val requests: MutableList<Request> = mutableListOf(),
-	val players: HashMap<String, String> = hashMapOf(),
+	private val accounts: AccountsRepository = AccountsRepository(),
 	private val sdk: SDK = SDK(),
 	val log: Logger = Logger()
 ) {
@@ -42,16 +43,4 @@ class Server (
 		}
 		return "OK"
 	}
-
-	fun changeName(playerId: String, name: String): Boolean {
-		if (!players.containsKey(playerId)) {
-			return false
-		}
-
-		players[playerId] = name
-		fights.forEach { it.participants.firstOrNull { it is Player && it.id == playerId }?.name = name }
-		return true
-	}
-
-	fun findFight(playerId: String) = fights.firstOrNull { it.participants.filter { it is Player && it.id == playerId }.isNotEmpty() }
 }
