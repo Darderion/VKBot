@@ -1,4 +1,4 @@
-package com.gogo.steelbotrun.vkbot.game.graph.dialogue
+package com.gogo.steelbotrun.vkbot.game.map.dialogue
 
 import com.gogo.steelbotrun.vkbot.core.condition.Condition
 import com.gogo.steelbotrun.vkbot.core.condition.predicate.PredicateTrue

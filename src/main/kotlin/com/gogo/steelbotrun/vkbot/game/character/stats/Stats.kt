@@ -65,7 +65,7 @@ class Stats {
 		private fun init() {
 			initialized = true
 
-			names = statsRepository!!.stats()
+			names = statsRepository!!.get()
 			length = names.values.toSet().count()
 		}
 	}

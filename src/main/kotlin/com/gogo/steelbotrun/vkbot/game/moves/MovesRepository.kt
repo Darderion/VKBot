@@ -10,7 +10,7 @@ import java.lang.Error
 class MovesRepository(filePath: String = "/src/main/resources/static/moves.txt") {
 	private val moves = mutableListOf<Move>()
 
-	fun moves() = moves.toList()
+	fun get() = moves.toList()
 
 	init {
 		val movesFile = File("${System.getProperty("user.dir")}$filePath").readLines()

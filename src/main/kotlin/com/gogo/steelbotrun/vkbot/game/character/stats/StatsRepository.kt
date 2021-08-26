@@ -12,5 +12,5 @@ class StatsRepository(filePath: String = "/src/test/resources/static/test_stats.
 		.flatten()
 		.associateBy({ it.first }, { it.second })
 
-	fun stats() = stats.toMap()
+	fun get() = stats.toMap()
 }
